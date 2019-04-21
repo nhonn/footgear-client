@@ -1,10 +1,149 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <title>{{title}}</title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
-  </head>
-  <body>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" />
+  <!-- FontAwesome CSS -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+    integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous" />
+  <!-- Owl Carousel CSS -->
+  <link type="text/css" rel="stylesheet" href="/css/owl.carousel.min.css" />
+  <!-- Custom CSS -->
+  <link type="text/css" rel="stylesheet" href="/css/index.css" />
+
+  <title>Hello, world!</title>
+</head>
+
+<body>
+  <nav class="sticky-top navbar navbar-expand-lg">
+    <a class="navbar-brand" href="#"><b>FOOTGEAR</b> STORE</a>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="#">Nam</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Nữ</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">
+            Danh mục sản phẩm
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="#">Giày Nam</a>
+            <a class="dropdown-item" href="#">Giày Nữ</a>
+            <a class="dropdown-item" href="#">Dép</a>
+            <a class="dropdown-item" href="#">Phụ kiện</a>
+          </div>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">
+            Thương hiệu
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="#">Adidas</a>
+            <a class="dropdown-item" href="#">Biti's</a>
+            <a class="dropdown-item" href="#">Converse</a>
+            <a class="dropdown-item" href="#">Nike</a>
+            <a class="dropdown-item" href="#">Vans</a>
+          </div>
+        </li>
+      </ul>
+      <form class="form-inline my-2 my-lg-0">
+        <input class="form-control mr-sm-2" type="search" placeholder="Tìm kiếm" aria-label="Search" />
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">
+          <i class="fas fa-search"></i>
+        </button>
+      </form>
+      <button type="button" class="btn">
+        <i class="fas fa-shopping-cart"></i>
+      </button>
+      <button type="button" class="btn">
+        <i class="fas fa-user"></i>
+      </button>
+    </div>
+  </nav>
+  <main>
     {{{body}}}
-  </body>
+  </main>
+
+  <footer>
+    <div class="row">
+      <div class="col">
+        <h6>
+          Danh mục sản phẩm
+        </h6>
+        <ul class="nav flex-column">
+          <li class="nav-item">
+            <a class="nav-link" href="#">Giày nam</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Giày nữ</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Dép</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Phụ kiện</a>
+          </li>
+        </ul>
+      </div>
+      <div class="col">
+        <h6>Hỗ trợ</h6>
+        <ul class="nav flex-column">
+          <li class="nav-item">
+            <a class="nav-link" href="#">Đăng nhập/ Đăng ký</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Quản lý tài khoản</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Quản lý đơn hàng</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Điều khoản sử dụng</a>
+          </li>
+        </ul>
+      </div>
+      <div class="col">
+        <h6>Phương thức thanh toán</h6>
+        <i class="fab fa-cc-paypal fa-2x"></i>
+        <i class="fab fa-cc-mastercard fa-2x"></i>
+        <i class="fab fa-cc-visa fa-2x"></i>
+        <i class="fas fa-money-bill fa-2x"></i>
+      </div>
+      <div class="col">
+        <h6>Kết nối với chúng tôi</h6>
+      </div>
+    </div>
+    <hr />
+    <div class="text-center">
+      Built with ♡ by <a href="https://nhonn.xyz">nhonn</a>
+    </div>
+  </footer>
+
+  <!-- Optional JavaScript -->
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+    crossorigin="anonymous"></script>
+  <script src="/js/owl.carousel.min.js"></script>
+  <script src="/js/index.js"></script>
+</body>
+
 </html>
