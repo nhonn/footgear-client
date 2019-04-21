@@ -1,0 +1,45 @@
+img {
+  max-height: 400px;
+}
+
+body {
+  background: hsl(0, 0%, 96%);
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  min-height: 100vh;
+}
+
+section {
+  background: white;
+  margin: 2rem auto;
+  padding: 1.3rem;
+  border-radius: 3px;
+  box-shadow: 0 0 5px hsl(0, 0%, 90%);
+}
+
+footer {
+  background: hsl(0, 0%, 13%);
+  color: white;
+  padding: 2rem 3rem;
+}
+
+footer ul.nav {
+  padding: 0;
+  margin: 0;
+}
+
+footer a {
+  color: white;
+}
+
+main {
+  margin: 2% 3%;
+}
+
+nav {
+  background: white;
+  box-shadow: 0 0 5px hsl(0, 0%, 90%);
+}
+
+nav a {
+  color: black;
+}
