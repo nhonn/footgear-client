@@ -5,6 +5,7 @@ img {
 body {
   background: hsl(0, 0%, 96%);
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  min-height: 100vh;
 }
 
 section {
