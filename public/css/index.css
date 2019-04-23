@@ -4,8 +4,6 @@ img {
 
 body {
   background: hsl(0, 0%, 96%);
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-  min-height: 100vh;
 }
 
 section {
@@ -42,4 +40,38 @@ nav {
 
 nav a {
   color: black;
+}
+
+.card {
+  margin: 1rem 1rem;
+  padding: 1rem 1rem;
+}
+
+.cart-item__img {
+  max-width: 10rem;
+}
+
+.cart-item__img img {
+  max-width: 100%;
+}
+
+.cart-item__name {
+  max-width: 6rem;
+  align-items: center;
+}
+
+.cart-item__price {
+  max-width: 6rem;
+}
+
+.cart-item__quantity {
+  max-width: 6rem;
+}
+
+.cart-item__total {
+  max-width: 6rem;
+}
+
+.cart-item__action {
+  max-width: 120px;
 }
