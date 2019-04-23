@@ -17,20 +17,20 @@
   <!-- Custom CSS -->
   <link type="text/css" rel="stylesheet" href="/css/index.css" />
 
-  <title>Hello, world!</title>
+  <title>{{title}}</title>
 </head>
 
 <body>
   <nav class="sticky-top navbar navbar-expand-lg">
-    <a class="navbar-brand" href="#"><b>FOOTGEAR</b> STORE</a>
+    <a class="navbar-brand" href="/"><b>FOOTGEAR</b> STORE</a>
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
         <li class="nav-item">
-          <a class="nav-link" href="#">Nam</a>
+          <a class="nav-link" href="/category">Nam</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Nữ</a>
+          <a class="nav-link" href="/category">Nữ</a>
         </li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
@@ -38,10 +38,10 @@
             Danh mục sản phẩm
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" href="#">Giày Nam</a>
-            <a class="dropdown-item" href="#">Giày Nữ</a>
-            <a class="dropdown-item" href="#">Dép</a>
-            <a class="dropdown-item" href="#">Phụ kiện</a>
+            <a class="dropdown-item" href="/category">Giày Nam</a>
+            <a class="dropdown-item" href="/category">Giày Nữ</a>
+            <a class="dropdown-item" href="/category">Dép</a>
+            <a class="dropdown-item" href="/category">Phụ kiện</a>
           </div>
         </li>
         <li class="nav-item dropdown">
@@ -50,11 +50,11 @@
             Thương hiệu
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" href="#">Adidas</a>
-            <a class="dropdown-item" href="#">Biti's</a>
-            <a class="dropdown-item" href="#">Converse</a>
-            <a class="dropdown-item" href="#">Nike</a>
-            <a class="dropdown-item" href="#">Vans</a>
+            <a class="dropdown-item" href="/category">Adidas</a>
+            <a class="dropdown-item" href="/category">Biti's</a>
+            <a class="dropdown-item" href="/category">Converse</a>
+            <a class="dropdown-item" href="/category">Nike</a>
+            <a class="dropdown-item" href="/category">Vans</a>
           </div>
         </li>
       </ul>
@@ -64,12 +64,12 @@
           <i class="fas fa-search"></i>
         </button>
       </form>
-      <button type="button" class="btn">
+      <a class="btn" href="/cart">
         <i class="fas fa-shopping-cart"></i>
-      </button>
-      <button type="button" class="btn">
+      </a>
+      <a class="btn" href="/users/profile">
         <i class="fas fa-user"></i>
-      </button>
+      </a>
     </div>
   </nav>
   <main>
@@ -77,23 +77,23 @@
   </main>
 
   <footer>
-    <div class="row">
+    <div class="container row justify-content-center">
       <div class="col">
         <h6>
           Danh mục sản phẩm
         </h6>
         <ul class="nav flex-column">
           <li class="nav-item">
-            <a class="nav-link" href="#">Giày nam</a>
+            <a class="nav-link" href="/category">Giày nam</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Giày nữ</a>
+            <a class="nav-link" href="/category">Giày nữ</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Dép</a>
+            <a class="nav-link" href="/category">Dép</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Phụ kiện</a>
+            <a class="nav-link" href="/category">Phụ kiện</a>
           </li>
         </ul>
       </div>
@@ -101,10 +101,10 @@
         <h6>Hỗ trợ</h6>
         <ul class="nav flex-column">
           <li class="nav-item">
-            <a class="nav-link" href="#">Đăng nhập/ Đăng ký</a>
+            <a class="nav-link" href="/users/login">Đăng nhập/ Đăng ký</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Quản lý tài khoản</a>
+            <a class="nav-link" href="/users/profile">Quản lý tài khoản</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="#">Quản lý đơn hàng</a>
@@ -121,13 +121,10 @@
         <i class="fab fa-cc-visa fa-2x"></i>
         <i class="fas fa-money-bill fa-2x"></i>
       </div>
-      <div class="col">
-        <h6>Kết nối với chúng tôi</h6>
-      </div>
     </div>
     <hr />
     <div class="text-center">
-      Built with ♡ by <a href="https://nhonn.xyz">nhonn</a>
+      Built with ☕ by <a href="https://nhonn.xyz">nhonn</a>
     </div>
   </footer>
 
