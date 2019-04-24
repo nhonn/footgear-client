@@ -17,11 +17,11 @@ router.get("/category", (req, res) => {
 router.get("/detail", (req, res) => {
   res.render("productDetail");
 });
-router.get("/checkout", (req,res) => {
-  res.render("checkout")
-})
+router.get("/checkout", (req, res) => {
+  res.render("checkout");
+});
 
-router.get("/orders/history", (req,res) => {
-  res.render("order")
-})
+router.get("/orders/history", (req, res) => {
+  res.render("order");
+});
 module.exports = router;
