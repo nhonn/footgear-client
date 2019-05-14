@@ -22,15 +22,9 @@ app.use(express.static(path.join(__dirname, "public")));
 
 const indexRouter = require("./routes/index.route");
 const usersRouter = require("./routes/user.route");
-const cartRouter = require("./routes/cart.route");
-const categoryRouter = require("./routes/category.route");
-const orderRouter = require("./routes/order.route");
 
 app.use("/", indexRouter);
 app.use("/users", usersRouter);
-app.use("/category", categoryRouter);
-app.use("/cart", cartRouter);
-app.use("/order", orderRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

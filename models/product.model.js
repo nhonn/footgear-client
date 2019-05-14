@@ -9,6 +9,10 @@ const productSchema = new Schema({
   description: String,
   size: [Number],
   imgUrls: [String],
+  noOfPurchased: {
+    type: Number,
+    default: 0
+  },
   created_at: {
     type: Date,
     default: Date.now

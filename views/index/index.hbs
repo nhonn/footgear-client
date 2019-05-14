@@ -1,40 +1,33 @@
 <div class="owl-carousel owl-theme" id="banner">
-  <div class="item"><img src="/img/3134083556545120.jpg" /></div>
-  <div class="item"><img src="/img/9186963780455400.jpg" /></div>
-  <div class="item"><img src="/img/banner-nike-air-max2-light.jpg" /></div>
+  {{#each banners}}
+  <div class="item"><img src={{this}} /></div>
+  {{/each}}
 </div>
 
 <section>
   <h3>Hàng mới về</h3>
   <hr />
   <div class="owl-carousel owl-theme" id="newArrivals">
-    <div class="item"><img
-        src="/img/Giày Sneaker Converse Chuck Taylor All Star Seasonal Color 161417C - Punch Coral.jpg" /></div>
-    <div class="item"><img
-        src="/img/Giày Thể Thao Nữ Biti's Biti’s Hunter X – 2K18 – DSUH00400TIM - Midnight Mystery.jpg" /></div>
-    <div class="item"><img src="/img/GIÀY NIKE AIR MAX 270 NAM - TRẮNG XANH.jpg" /></div>
-    <div class="item"><img src="/img/Giày Adidas ADIDAS Fluidcloud CC Ambitious M CG2727.jpg"></div>
+    {{#each newArrivals}}
+    <div class="item"><img src={{this.img}} /></div>
+    {{/each}}
   </div>
 </section>
 <section>
   <h3>Sản phẩm bán chạy</h3>
   <hr />
   <div class="owl-carousel owl-theme" id="hotItems">
-    <div class="item"><img src="/img/Giày Sneaker Unisex Converse Chuck Taylor All Star Classic Low - White.jpg" />
-    </div>
-    <div class="item"><img src="/img/vans-old-skool-classic-black-white-vn000d3hy28-4.png" /></div>
-    <div class="item"><img src="/img/vans-classic-mix-checkerboard-sk8-hi-vn0a38geq9b-2.png" /></div>
-    <div class="item"><img src="/img/Giày Adidas ADIDAS Fluidcloud CC Ambitious M CG2727.jpg"></div>
+    {{#each hotItems}}
+    <div class="item"><img src={{this.img}} /></div>
+    {{/each}}
   </div>
 </section>
 <section>
   <h3>Thương hiệu</h3>
   <hr />
   <div class="owl-carousel owl-theme" id="brands">
-    <div class="item"><img src="/img/nike.png" /></div>
-    <div class="item"><img src="/img/bitis.jpg" /></div>
-    <div class="item"><img src="/img/vans.jpg" /></div>
-    <div class="item"><img src="/img/converse.png" /></div>
-    <div class="item"><img src="/img/adidas.jpg" /></div>
+    {{#each brands}}
+    <div class="item"><img src={{this.img}} /></div>
+    {{/each}}
   </div>
 </section>
