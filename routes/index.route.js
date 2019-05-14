@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const ctrl = require("../ctrls/index.controller");
+const ctrl = require("../controllers/index.controller");
 
 router.get("/", ctrl.getHomepage);
 

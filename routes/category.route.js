@@ -4,3 +4,5 @@ const ctrl = require("../controllers/genre.controller");
 router.get("/", ctrl.getIndex);
 
 module.exports = router;
+
+!!now;
