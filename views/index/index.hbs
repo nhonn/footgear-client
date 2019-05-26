@@ -1,6 +1,6 @@
 <div class="owl-carousel owl-theme" id="banner">
   {{#each banners}}
-  <div class="item"><img src={{this}} /></div>
+  <div class="item"><img class="lazy" data-src={{this}} /></div>
   {{/each}}
 </div>
 
@@ -9,7 +9,7 @@
   <hr />
   <div class="owl-carousel owl-theme" id="newArrivals">
     {{#each newArrivals}}
-    <div class="item"><img src={{this.img}} /></div>
+    <div class="item"><img class="lazy" data-src={{this.img}} /></div>
     {{/each}}
   </div>
 </section>
@@ -18,7 +18,7 @@
   <hr />
   <div class="owl-carousel owl-theme" id="hotItems">
     {{#each hotItems}}
-    <div class="item"><img src={{this.img}} /></div>
+    <div class="item"><img class="lazy" data-src={{this.img}} /></div>
     {{/each}}
   </div>
 </section>
@@ -27,7 +27,7 @@
   <hr />
   <div class="owl-carousel owl-theme" id="brands">
     {{#each brands}}
-    <div class="item"><img src={{this.img}} /></div>
+    <div class="item"><img class="lazy" data-src={{this.img}} /></div>
     {{/each}}
   </div>
 </section>

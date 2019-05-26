@@ -1,8 +1,13 @@
-const router = require("express").Router();
-const ctrl = require("../controllers/user.controller");
+const router = require('express').Router()
+const ctrl = require('../controllers/user.controller')
 
-router.get("/login", ctrl.getLoginPage);
-router.get("/register", ctrl.getRegisterPage);
-router.get("/profile", ctrl.getProfilePage);
+router.route('/dang-nhap').get(ctrl.getLoginPage)
 
-module.exports = router;
+router
+  .route('/dang-ky')
+  .get(ctrl.getRegisterPage)
+  .post(ctrl.registerNewUser)
+
+router.get('/', ctrl.getProfilePage)
+
+module.exports = router
