@@ -1,28 +1,16 @@
-img {
-  max-height: 400px;
-}
-
+html,
 body {
   background: hsl(0, 0%, 96%);
-}
-
-section {
-  background: white;
-  margin: 2rem auto;
-  padding: 1.3rem;
-  border-radius: 3px;
-  box-shadow: 0 0 5px hsl(0, 0%, 90%);
+  height: 100%;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 footer {
   background: hsl(0, 0%, 13%);
   color: white;
-  padding: 2rem 3rem;
-}
-
-footer ul.nav {
-  padding: 0;
-  margin: 0;
+  padding: 2rem 2rem;
+  bottom: 0px;
+  width: 100%;
 }
 
 footer a {
@@ -30,21 +18,23 @@ footer a {
 }
 
 main {
-  margin: 2% 3%;
+  min-height: 72vh;
+  margin: 15px 3%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-nav {
-  background: white;
-  box-shadow: 0 0 5px hsl(0, 0%, 90%);
-}
-
-nav a {
-  color: black;
+#banner img {
+  max-height: 400px;
 }
 
 .card {
   margin: 1rem 1rem;
   padding: 1rem 1rem;
+  min-width: 30%;
+  border-radius: 3px;
+  box-shadow: 0 0 5px hsl(0, 0%, 90%);
 }
 
 .cart-item__img {
@@ -74,4 +64,12 @@ nav a {
 
 .cart-item__action {
   max-width: 120px;
+}
+
+.navbar {
+  background: hsl(0, 0%, 13%);
+}
+
+.navbar i {
+  color: hsl(0, 0%, 96%);
 }

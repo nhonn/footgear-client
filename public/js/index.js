@@ -1,20 +1,3 @@
-$("#newArrivals").owlCarousel({
-  loop: true,
-  margin: 10,
-  nav: true,
-  responsive: {
-    0: {
-      items: 1
-    },
-    600: {
-      items: 3
-    },
-    1000: {
-      items: 5
-    }
-  }
-});
-
 $("#banner").owlCarousel({
   loop: true,
   margin: 10,
@@ -31,7 +14,7 @@ $("#banner").owlCarousel({
   }
 });
 
-$("#hotItems").owlCarousel({
+$(".owl-carousel").owlCarousel({
   loop: true,
   margin: 10,
   nav: true,
@@ -48,19 +31,4 @@ $("#hotItems").owlCarousel({
   }
 });
 
-$("#brands").owlCarousel({
-  loop: true,
-  margin: 10,
-  nav: true,
-  responsive: {
-    0: {
-      items: 1
-    },
-    600: {
-      items: 3
-    },
-    1000: {
-      items: 5
-    }
-  }
-});
+$(".lazy").Lazy();

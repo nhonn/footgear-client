@@ -4,44 +4,41 @@
 <head>
   <!-- Required meta tags -->
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, shrink-to-fit=no" />
 
   <!-- Bootstrap CSS -->
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
+    integrity="sha256-YLGeXaapI0/5IgZopewRJcFXomhRMlYYjugPLSyNjTY=" crossorigin="anonymous">
   <!-- FontAwesome CSS -->
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
     integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous" />
   <!-- Owl Carousel CSS -->
-  <link type="text/css" rel="stylesheet" href="/css/owl.carousel.min.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/owl.carousel@2.3.4/dist/assets/owl.carousel.min.css"
+    integrity="sha256-UhQQ4fxEeABh4JrcmAJ1+16id/1dnlOEVCFOxDef9Lw=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/owl.carousel@2.3.4/dist/assets/owl.theme.default.min.css"
+    integrity="sha256-kksNxjDRxd/5+jGurZUJd1sdR2v+ClrCl3svESBaJqw=" crossorigin="anonymous">
   <!-- Custom CSS -->
-  <link type="text/css" rel="stylesheet" href="/css/index.css" />
+  <link rel="stylesheet" href="/css/index.css" />
 
   <title>{{title}}</title>
 </head>
 
 <body>
-  <nav class="sticky-top navbar navbar-expand-lg">
-    <a class="navbar-brand" href="/"><b>FOOTGEAR</b> STORE</a>
+  <nav class="navbar navbar-expand-lg navbar-dark">
+    <a class="navbar-brand" href="/"><b>SNEAKIIE</b></a>
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
-        <li class="nav-item">
-          <a class="nav-link" href="/category">Nam</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/category">Nữ</a>
-        </li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
             aria-haspopup="true" aria-expanded="false">
             Danh mục sản phẩm
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" href="/category">Giày Nam</a>
-            <a class="dropdown-item" href="/category">Giày Nữ</a>
-            <a class="dropdown-item" href="/category">Dép</a>
-            <a class="dropdown-item" href="/category">Phụ kiện</a>
+            <a class="dropdown-item" href="/danh-muc/giay-nam">Giày Nam</a>
+            <a class="dropdown-item" href="/danh-muc/giay-nu">Giày Nữ</a>
+            <a class="dropdown-item" href="/danh-muc/dep">Dép</a>
+            <a class="dropdown-item" href="/danh-muc/phu-kien">Phụ kiện</a>
           </div>
         </li>
         <li class="nav-item dropdown">
@@ -50,11 +47,11 @@
             Thương hiệu
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" href="/category">Adidas</a>
-            <a class="dropdown-item" href="/category">Biti's</a>
-            <a class="dropdown-item" href="/category">Converse</a>
-            <a class="dropdown-item" href="/category">Nike</a>
-            <a class="dropdown-item" href="/category">Vans</a>
+            <a class="dropdown-item" href="/thuong-hieu/adidas">Adidas</a>
+            <a class="dropdown-item" href="/thuong-hieu/bitis">Biti's</a>
+            <a class="dropdown-item" href="/thuong-hieu/converse">Converse</a>
+            <a class="dropdown-item" href="/thuong-hieu/nike">Nike</a>
+            <a class="dropdown-item" href="/thuong-hieu/vans">Vans</a>
           </div>
         </li>
       </ul>
@@ -64,10 +61,10 @@
           <i class="fas fa-search"></i>
         </button>
       </form>
-      <a class="btn" href="/cart">
+      <a class="btn" href="/gio-hang">
         <i class="fas fa-shopping-cart"></i>
       </a>
-      <a class="btn" href="/users/profile">
+      <a class="btn" href="/tai-khoan">
         <i class="fas fa-user"></i>
       </a>
     </div>
@@ -77,23 +74,23 @@
   </main>
 
   <footer>
-    <div class="container row justify-content-center">
+    <div class="container row">
       <div class="col">
         <h6>
           Danh mục sản phẩm
         </h6>
         <ul class="nav flex-column">
           <li class="nav-item">
-            <a class="nav-link" href="/category">Giày nam</a>
+            <a href="/danh-muc/giay-nam">Giày nam</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/category">Giày nữ</a>
+            <a href="/danh-muc/giay-nu">Giày nữ</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/category">Dép</a>
+            <a href="/danh-muc/dep">Dép</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/category">Phụ kiện</a>
+            <a href="/danh-muc/phu-kien">Phụ kiện</a>
           </li>
         </ul>
       </div>
@@ -101,45 +98,55 @@
         <h6>Hỗ trợ</h6>
         <ul class="nav flex-column">
           <li class="nav-item">
-            <a class="nav-link" href="/users/login">Đăng nhập/ Đăng ký</a>
+            <a href="/tai-khoan/dang-nhap">Đăng nhập/ Đăng ký</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/users/profile">Quản lý tài khoản</a>
+            <a href="/tai-khoan">Quản lý tài khoản</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/orders/history">Lịch sử mua hàng</a>
+            <a href="/don-hang/lich-su">Lịch sử mua hàng</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Điều khoản sử dụng</a>
+            <a href="/dieu-khoan-su-dung">Điều khoản sử dụng</a>
           </li>
         </ul>
       </div>
       <div class="col">
         <h6>Phương thức thanh toán</h6>
-        <i class="fab fa-cc-paypal fa-2x"></i>
-        <i class="fab fa-cc-mastercard fa-2x"></i>
-        <i class="fab fa-cc-visa fa-2x"></i>
-        <i class="fas fa-money-bill fa-2x"></i>
+        <ul class="nav flex-column">
+          <li class="nav-item">
+            <i class="fas fa-money-bill"></i> Tiền mặt
+          </li>
+          <li class="nav-item">
+            <i class="fab fa-cc-paypal"></i> Paypal
+          </li>
+          <li class="nav-item">
+            <i class="fab fa-cc-visa"></i> Thẻ thanh toán quốc tế
+          </li>
+          <li class="nav-item">
+            <i class="far fa-credit-card"></i> Thẻ thanh toán nội địa
+          </li>
+        </ul>
       </div>
-    </div>
-    <hr />
-    <div class="text-center">
-      Built with ☕ by <a href="https://nhonn.xyz">nhonn</a>
+      <div class="col">
+        <h6>Thông tin liên hệ</h6>
+        Địa chỉ shop: 227 Nguyễn Văn Cừ, Quận 5, Tp HCM
+        <br>
+        Số điện thoại: 0123455555
+      </div>
     </div>
   </footer>
 
   <!-- Optional JavaScript -->
   <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-    crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
-    crossorigin="anonymous"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-    crossorigin="anonymous"></script>
-  <script src="/js/owl.carousel.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js"
+    integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js"
+    integrity="sha256-CjSoeELFOcH0/uxWu6mC/Vlrc1AARqbm/jiiImDGV3s=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/owl.carousel@2.3.4/dist/owl.carousel.min.js"
+    integrity="sha256-pTxD+DSzIwmwhOqTFN+DB+nHjO4iAsbgfyFq5K5bcE0=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jquery-lazy@1.7.10/jquery.lazy.min.js"
+    integrity="sha256-F1PsuZtrEWg+kzpvQ5sTsw8l1uJks9BFNVew39S2rZU=" crossorigin="anonymous"></script>
   <script src="/js/index.js"></script>
 </body>
 

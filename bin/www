@@ -5,7 +5,7 @@
  */
 
 const app = require("../app");
-const debug = require("debug")("accessories-client:server");
+const debug = require("debug")("footgear-client:server");
 const http = require("http");
 
 /**
