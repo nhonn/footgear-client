@@ -59,22 +59,26 @@ module.exports = {
     ]
     const newArrivals = [
       {
+        id: 'owao',
         name: 'Bitis Super Hot',
         price: 1200000,
         img:
           '/img/Giày Sneaker Unisex Converse Chuck Taylor All Star Classic Low - White.jpg'
       },
       {
+        id: 'owao',
         name: 'Adidas Ultra Hot',
         price: 2200000,
         img: '/img/Giày Adidas ADIDAS Fluidcloud CC Ambitious M CG2727.jpg'
       },
       {
+        id: 'owao',
         name: 'Vans Omega Hot',
         price: 1800000,
         img: '/img/vans-old-skool-classic-black-white-vn000d3hy28-4.png'
       },
       {
+        id: 'owao',
         name: 'Vans Theta Hot',
         price: 1850000,
         img: '/img/vans-classic-mix-checkerboard-sk8-hi-vn0a38geq9b-2.png'

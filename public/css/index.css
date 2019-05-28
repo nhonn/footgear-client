@@ -13,8 +13,36 @@ footer {
   width: 100%;
 }
 
+.owl-carousel a:link {
+  color: black;
+  text-decoration: none;
+}
+
+/* visited link */
+.owl-carousel a:visited {
+  color: coral;
+  text-decoration: none;
+}
+
+/* mouse over link */
+.owl-carousel a:hover {
+  color: black;
+  text-decoration: none;
+}
+
+/* selected link */
+.owl-carousel a:active {
+  color: black;
+  text-decoration: none;
+}
+
 footer a {
   color: white;
+}
+
+footer a:hover {
+  color: coral;
+  text-decoration: none;
 }
 
 main {

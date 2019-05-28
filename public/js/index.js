@@ -1,4 +1,5 @@
-$("#banner").owlCarousel({
+/* eslint-disable no-undef */
+$('#banner').owlCarousel({
   loop: true,
   margin: 10,
   responsive: {
@@ -12,12 +13,10 @@ $("#banner").owlCarousel({
       items: 1
     }
   }
-});
+})
 
-$(".owl-carousel").owlCarousel({
+$('.owl-carousel').owlCarousel({
   loop: true,
-  margin: 10,
-  nav: true,
   responsive: {
     0: {
       items: 1
@@ -29,6 +28,6 @@ $(".owl-carousel").owlCarousel({
       items: 5
     }
   }
-});
+})
 
-$(".lazy").Lazy();
+$('.lazy').Lazy()

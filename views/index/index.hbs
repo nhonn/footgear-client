@@ -6,10 +6,16 @@
   </div>
   <div class="card">
     <h3>Hàng mới về</h3>
-    <hr />
+    <hr>
     <div class="owl-carousel owl-theme" id="newArrivals">
       {{#each newArrivals}}
-      <div class="item"><img class="lazy" data-src={{this.img}} /></div>
+      <a href="/san-pham/{{this.id}}">
+        <div>
+          <img class="lazy" data-src={{this.img}}>
+          <h6>{{this.name}}</h6>
+          <p style="color: red;">{{this.price}}</p>
+        </div>
+      </a>
       {{/each}}
     </div>
   </div>
@@ -18,7 +24,13 @@
     <hr />
     <div class="owl-carousel owl-theme" id="hotItems">
       {{#each hotItems}}
-      <div class="item"><img class="lazy" data-src={{this.img}} /></div>
+      <a href="/san-pham/{{this.id}}">
+        <div>
+          <img class="lazy" data-src={{this.img}}>
+          <h6>{{this.name}}</h6>
+          <p style="color: red;">{{this.price}}</p>
+        </div>
+      </a>
       {{/each}}
     </div>
   </div>
@@ -27,7 +39,11 @@
     <hr />
     <div class="owl-carousel owl-theme" id="brands">
       {{#each brands}}
-      <div class="item"><img class="lazy" data-src={{this.img}} /></div>
+      <a href="/thuong-hieu/{{this.id}}">
+        <div>
+          <img class="lazy" data-src={{this.img}}>
+        </div>
+      </a>
       {{/each}}
     </div>
   </div>
