@@ -1,33 +1,34 @@
-<div class="owl-carousel owl-theme" id="banner">
-  {{#each banners}}
-  <div class="item"><img class="lazy" data-src={{this}} /></div>
-  {{/each}}
+<div class="container-fluid">
+  <div class="owl-carousel owl-theme" id="banner">
+    {{#each banners}}
+    <div class="item"><img class="lazy" data-src={{this}} /></div>
+    {{/each}}
+  </div>
+  <div class="card">
+    <h3>Hàng mới về</h3>
+    <hr />
+    <div class="owl-carousel owl-theme" id="newArrivals">
+      {{#each newArrivals}}
+      <div class="item"><img class="lazy" data-src={{this.img}} /></div>
+      {{/each}}
+    </div>
+  </div>
+  <div class="card">
+    <h3>Sản phẩm bán chạy</h3>
+    <hr />
+    <div class="owl-carousel owl-theme" id="hotItems">
+      {{#each hotItems}}
+      <div class="item"><img class="lazy" data-src={{this.img}} /></div>
+      {{/each}}
+    </div>
+  </div>
+  <div class="card">
+    <h3>Thương hiệu</h3>
+    <hr />
+    <div class="owl-carousel owl-theme" id="brands">
+      {{#each brands}}
+      <div class="item"><img class="lazy" data-src={{this.img}} /></div>
+      {{/each}}
+    </div>
+  </div>
 </div>
-
-<section>
-  <h3>Hàng mới về</h3>
-  <hr />
-  <div class="owl-carousel owl-theme" id="newArrivals">
-    {{#each newArrivals}}
-    <div class="item"><img class="lazy" data-src={{this.img}} /></div>
-    {{/each}}
-  </div>
-</section>
-<section>
-  <h3>Sản phẩm bán chạy</h3>
-  <hr />
-  <div class="owl-carousel owl-theme" id="hotItems">
-    {{#each hotItems}}
-    <div class="item"><img class="lazy" data-src={{this.img}} /></div>
-    {{/each}}
-  </div>
-</section>
-<section>
-  <h3>Thương hiệu</h3>
-  <hr />
-  <div class="owl-carousel owl-theme" id="brands">
-    {{#each brands}}
-    <div class="item"><img class="lazy" data-src={{this.img}} /></div>
-    {{/each}}
-  </div>
-</section>

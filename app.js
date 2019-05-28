@@ -3,6 +3,7 @@ const path = require('path')
 const cookieParser = require('cookie-parser')
 const logger = require('morgan')
 const favicon = require('serve-favicon')
+const session = require('cookie-session')
 require('./fn/dbconnect')
 
 const app = express()
@@ -18,16 +19,31 @@ app.use(
     extended: false
   })
 )
+app.use(
+  session({
+    name: 'session',
+    keys: ['onion ninja'],
+    maxAge: 60 * 1000 // 1 mins
+  })
+)
 app.use(cookieParser())
 app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')))
 app.use(express.static(path.join(__dirname, 'public')))
+
+function isLogged(req, res, next) {
+  if (req.session.uid) {
+    next()
+  } else {
+    res.render('user/login')
+  }
+}
 
 const indexRouter = require('./routes/index.route')
 const usersRouter = require('./routes/user.route')
 const productRouter = require('./routes/product.route')
 
 app.use('/', indexRouter)
-app.use('/tai-khoan', usersRouter)
+app.use('/tai-khoan', isLogged, usersRouter)
 app.use('/san-pham', productRouter)
 
 // catch 404 and forward to error handler

@@ -1,7 +1,10 @@
 const router = require('express').Router()
 const ctrl = require('../controllers/user.controller')
 
-router.route('/dang-nhap').get(ctrl.getLoginPage)
+router
+  .route('/dang-nhap')
+  .get(ctrl.getLoginPage)
+  .post(ctrl.clientLogin)
 
 router
   .route('/dang-ky')

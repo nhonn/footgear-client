@@ -1,5 +1,6 @@
-"use strict";
-const Schema = require("mongoose").Schema;
+'use strict'
+const mongoose = require('mongoose')
+const Schema = mongoose.Schema
 
 const categorySchema = new Schema({
   categoryID: String,
@@ -8,7 +9,7 @@ const categorySchema = new Schema({
     type: Date,
     default: Date.now
   }
-});
+})
 
-const Category = mongoose.model("Category", categorySchema);
-module.exports = Category;
+const Category = mongoose.model('Category', categorySchema)
+module.exports = Category

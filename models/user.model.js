@@ -44,18 +44,23 @@ userSchema.pre('save', async function() {
   this.password = await bcrypt.hash(this.password, 5)
 })
 
-userSchema.statics.checkPassword = function(req) {
-  this.model('User').findOne({ email: req.body.email }, function(err, result) {
-    if (err) console.log(err)
-    if (result != null) {
-      bcrypt.compare(req.body.password, result.password, function(err, res) {
-        if (err) console.log(err)
-        if (res === true) return true
-        return false
-      })
+// bcrypt.compare(body.password, doc.password
+userSchema.statics.checkPassword = async function(email, password) {
+  let result = await this.model('User').findOne(
+    { email: email },
+    (err, doc) => {
+      if (err) console.log(err)
+      if (doc == null) return false
+      else {
+        bcrypt.compare(password, doc.password, (err, result) => {
+          if (err) console.log(err)
+          return result
+        })
+      }
     }
-    return false
-  })
+  )
+  console.log(result)
+  return result
 }
 
 userSchema.methods.changePassword = async function(newPassword) {
@@ -67,4 +72,5 @@ userSchema.query.findAllClients = function() {
 }
 
 const User = mongoose.model('User', userSchema)
+
 module.exports = User
