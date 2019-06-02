@@ -3,35 +3,36 @@
 module.exports = {
   getHomepage: (req, res) => {
     const banners = [
-      '/img/3134083556545120.jpg',
-      '/img/9186963780455400.jpg',
-      '/img/banner-nike-air-max2-light.jpg'
+      '/img/banners/sara-rolin-330229.jpg',
+      '/img/banners/alice-donovan-rouse-199230.jpg',
+      '/img/banners/edgar-chaparro-677232.jpg',
+      '/img/banners/nadine-shaabana-144431.jpg'
     ]
     const brands = [
       {
         name: 'Nike',
-        img: '/img/nike.png',
-        link: '/category/nike'
+        id: 'nike',
+        img: '/img/brands/nike.jpg'
       },
       {
         name: "Biti's",
-        img: '/img/bitis.jpg',
-        link: '/category/bitis'
+        id: 'bitis',
+        img: '/img/brands/bitis.jpg'
       },
       {
         name: 'Adidas',
-        img: '/img/adidas.jpg',
-        link: '/category/adidas'
+        id: 'adidas',
+        img: '/img/brands/adidas.jpg'
       },
       {
         name: 'Vans',
-        img: '/img/vans.jpg',
-        link: '/category/vans'
+        id: 'vans',
+        img: '/img/brands/vans.jpg'
       },
       {
         name: 'Converse',
-        img: '/img/converse.png',
-        link: '/category/coverse'
+        id: 'converse',
+        img: '/img/brands/converse.jpg'
       }
     ]
     const hotItems = [

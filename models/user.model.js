@@ -6,7 +6,8 @@ const bcrypt = require('bcrypt')
 const userSchema = new Schema({
   userID: {
     type: String,
-    required: true
+    required: true,
+    default: Date.now
   },
   fullname: String,
   gender: {
@@ -18,7 +19,6 @@ const userSchema = new Schema({
     type: String,
     required: true
   },
-  birthYear: Number,
   password: {
     type: String,
     required: true

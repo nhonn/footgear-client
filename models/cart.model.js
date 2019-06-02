@@ -1,14 +1,19 @@
-"use strict";
-const Schema = require("mongoose").Schema;
+'use strict'
+const mongoose = require('mongoose')
+const Schema = mongoose.Schema
 
 const cartSchema = new Schema({
-  cartID: String,
+  cartID: {
+    type: String,
+    required: true,
+    default: Date.now
+  },
   items: [Object],
   created_at: {
     type: Date,
     default: Date.now
   }
-});
+})
 
-const Cart = mongoose.model("Cart", cartSchema);
-module.exports = Cart;
+const Cart = mongoose.model('Cart', cartSchema)
+module.exports = Cart

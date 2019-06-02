@@ -2,8 +2,8 @@
 const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 
-const categorySchema = new Schema({
-  categoryID: {
+const brandSchema = new Schema({
+  brandID: {
     type: String,
     required: true,
     default: Date.now
@@ -18,5 +18,5 @@ const categorySchema = new Schema({
   }
 })
 
-const Category = mongoose.model('Category', categorySchema)
-module.exports = Category
+const Brand = mongoose.model('Brand', brandSchema)
+module.exports = Brand

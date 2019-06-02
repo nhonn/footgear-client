@@ -1,9 +1,17 @@
-"use strict";
-const Schema = require("mongoose").Schema;
+'use strict'
+const mongoose = require('mongoose')
+const Schema = mongoose.Schema
 
 const orderSchema = new Schema({
-  orderID: String,
-  totalPrice: Number,
+  orderID: {
+    type: String,
+    required: true,
+    default: Date.now
+  },
+  totalPrice: {
+    type: Number,
+    default: 0
+  },
   items: [Object],
   status: String,
   created_at: {
@@ -14,7 +22,7 @@ const orderSchema = new Schema({
     type: Date,
     default: Date.now
   }
-});
+})
 
-const Order = mongoose.model("Order", orderSchema);
-module.exports = Order;
+const Order = mongoose.model('Order', orderSchema)
+module.exports = Order
