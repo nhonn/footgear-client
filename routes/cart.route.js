@@ -1,6 +1,6 @@
-const router = require("express").Router();
-const ctrl = require("../controllers/index.controller");
+const router = require('express').Router()
+const ctrl = require('../controllers/cart.controller')
 
-router.get("/", ctrl.getHomepage);
+router.get('/', ctrl.getCart)
 
-module.exports = router;
+module.exports = router

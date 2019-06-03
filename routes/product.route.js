@@ -1,6 +1,6 @@
-const router = require("express").Router();
-const ctrl = require("../controllers/product.controller");
+const router = require('express').Router()
+const ctrl = require('../controllers/product.controller')
 
-router.get("/:id", ctrl.getDetail);
+router.get('/:id', ctrl.getDetail)
 
-module.exports = router;
+module.exports = router

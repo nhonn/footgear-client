@@ -1,5 +1,7 @@
 'use strict'
 const mongoose = require('mongoose')
+const slug = require('mongoose-slug-updater')
+mongoose.plugin(slug)
 const Schema = mongoose.Schema
 
 const productSchema = new Schema({
@@ -19,6 +21,10 @@ const productSchema = new Schema({
   name: {
     type: String,
     required: true
+  },
+  slug: {
+    type: String,
+    slug: 'name'
   },
   price: {
     type: String,

@@ -41,10 +41,18 @@ function isLogged(req, res, next) {
 const indexRouter = require('./routes/index.route')
 const usersRouter = require('./routes/user.route')
 const productRouter = require('./routes/product.route')
+const categoryRouter = require('./routes/category.route')
+const brandRouter = require('./routes/brand.route')
+const cartRouter = require('./routes/cart.route')
+const orderRouter = require('./routes/order.route')
 
 app.use('/', indexRouter)
 app.use('/tai-khoan', isLogged, usersRouter)
 app.use('/san-pham', productRouter)
+app.use('/danh-muc', categoryRouter)
+app.use('/thuong-hieu', brandRouter)
+app.use('/gio-hang', cartRouter)
+app.use('/don-hang', orderRouter)
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

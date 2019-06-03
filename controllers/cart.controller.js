@@ -1,5 +1,5 @@
 module.exports = {
-  getGenre: (req, res) => {
+  getCart: (req, res) => {
     res.status(200).render('cart/index')
   }
 }
