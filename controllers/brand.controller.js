@@ -14,6 +14,10 @@ module.exports = {
       if (err) console.log(err)
       return res
     })
-    res.status(200).render('category/index', { list: list, brand: brand.name })
+    res.status(200).render('brand/index', {
+      list: list,
+      title: brand.name,
+      brand: brand
+    })
   }
 }

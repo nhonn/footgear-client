@@ -17,6 +17,10 @@ module.exports = {
         return res
       }
     )
-    res.status(200).render('category/index', { list: list, category: cat.name })
+    res.status(200).render('category/index', {
+      list: list,
+      title: cat.name,
+      category: cat
+    })
   }
 }

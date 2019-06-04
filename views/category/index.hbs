@@ -2,17 +2,19 @@
   <nav aria-label="breadcrumb">
     <ol class="breadcrumb">
       <li class="breadcrumb-item">Danh mục</li>
-      <li class="breadcrumb-item active" aria-current="page">{{category}}</li>
+      <li class="breadcrumb-item active" aria-current="page">{{category.name}}</li>
     </ol>
   </nav>
   {{#if list}}
-  <div class="row">
+  <div class="row flex-wrap">
     {{#each list}}
-    <a href="/san-pham/{{this.id}}" class="paper col-2">
-      <img class="lazy" data-src={{this.imgUrls}} style="max-width: 100%">
-      <hr>
-      <h6>{{this.name}}</h6>
-      <p class="price">{{this.price}} ₫</p>
+    <a href="/san-pham/{{this.slug}}" class="col-3">
+      <div class="paper">
+        <img class="lazy" data-src={{this.imgUrls}} style="max-width: 100%">
+        <hr>
+        <h6>{{this.name}}</h6>
+        <p class="price">{{this.price}} ₫</p>
+      </div>
     </a>
     {{/each}}
   </div>
