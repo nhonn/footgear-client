@@ -24,7 +24,8 @@ const productSchema = new Schema({
   },
   slug: {
     type: String,
-    slug: 'name'
+    slug: 'name',
+    unique: true
   },
   price: {
     type: String,

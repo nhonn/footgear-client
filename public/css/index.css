@@ -48,9 +48,6 @@ footer a:hover {
 main {
   min-height: 72vh;
   margin: 15px 3%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }
 
 #banner img {
@@ -58,45 +55,24 @@ main {
 }
 
 .card {
-  margin: 1rem 1rem;
-  padding: 1rem 1rem;
-  min-width: 30%;
+  margin-right: 0.2rem;
+  padding: 0.5rem;
   border-radius: 3px;
   box-shadow: 0 0 5px hsl(0, 0%, 90%);
+}
+
+a.card {
+  color: black;
+}
+
+a:hover.card {
+  color: black;
+  text-decoration: none;
 }
 
 .flat {
   box-shadow: 0 0 0px hsl(0, 0%, 100%) !important;
   border-width: 0px;
-}
-
-.cart-item__img {
-  max-width: 10rem;
-}
-
-.cart-item__img img {
-  max-width: 100%;
-}
-
-.cart-item__name {
-  max-width: 6rem;
-  align-items: center;
-}
-
-.cart-item__price {
-  max-width: 6rem;
-}
-
-.cart-item__quantity {
-  max-width: 6rem;
-}
-
-.cart-item__total {
-  max-width: 6rem;
-}
-
-.cart-item__action {
-  max-width: 120px;
 }
 
 .navbar {
@@ -105,4 +81,13 @@ main {
 
 .navbar i {
   color: hsl(0, 0%, 96%);
+}
+
+.price {
+  color: #ff1919;
+  font-weight: 600;
+}
+
+table {
+  background: white;
 }

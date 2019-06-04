@@ -8,6 +8,10 @@ const cartSchema = new Schema({
     required: true,
     default: Date.now
   },
+  userID: {
+    type: String,
+    required: true
+  },
   items: [Object],
   created_at: {
     type: Date,
