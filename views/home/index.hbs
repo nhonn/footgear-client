@@ -1,0 +1,50 @@
+<div class="container">
+  <div class="owl-carousel owl-theme" id="banner">
+    {{#each banners}}
+    <div class="item"><img src={{this}} /></div>
+    {{/each}}
+  </div>
+  {{#if newArrivals}}
+  <div class="paper">
+    <h5><span>Hàng mới về</span></h5>
+    <hr>
+    <div class="owl-carousel owl-theme">
+      {{#each newArrivals}}
+      <a href="/san-pham/{{this.slug}}">
+        <img src={{this.imgUrls}}>
+        <h6>{{this.name}}</h6>
+        <p class="price">{{this.price}} ₫</p>
+      </a>
+      {{/each}}
+    </div>
+  </div>
+  {{/if}}
+  {{#if hotItems}}
+  <div class="paper">
+    <h5><span>Sản phẩm bán chạy </span></h5>
+    <hr>
+    <div class="owl-carousel owl-theme">
+      {{#each hotItems}}
+      <a href="/san-pham/{{this.slug}}">
+        <img src={{this.imgUrls}}>
+        <h6>{{this.name}}</h6>
+        <p class="price">{{this.price}} ₫</p>
+      </a>
+      {{/each}}
+    </div>
+  </div>
+  {{/if}}
+  {{#if brands}}
+  <div class="paper">
+    <h5><span>Thương hiệu</span></h5>
+    <hr>
+    <div class="owl-carousel owl-theme">
+      {{#each brands}}
+      <a href="/thuong-hieu/{{this.slug}}">
+        <img class="lazy" data-src={{this.img}}>
+      </a>
+      {{/each}}
+    </div>
+  </div>
+  {{/if}}
+</div>
