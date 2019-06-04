@@ -25,12 +25,5 @@ const brandSchema = new Schema({
   }
 })
 
-brandSchema.statics.findAllBrands = async function() {
-  return this.model('Brand').find({}, (err, docs) => {
-    if (err) console.log(err)
-    return docs
-  })
-}
-
 const Brand = mongoose.model('Brand', brandSchema)
 module.exports = Brand
