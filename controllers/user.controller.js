@@ -23,14 +23,6 @@ module.exports = {
     })
   },
 
-  clientLogin: async (req, res) => {
-    let result = await User.checkPassword(req.body.email, req.body.password)
-    if (result) {
-      req.session.uid = result.userID
-      res.redirect('/')
-    } else res.redirect('/tai-khoan/dang-ky')
-  },
-
   getProfilePage: (req, res) => {
     res.status(200).render('user/profile', { title: 'Thông tin tài khoản' })
   }

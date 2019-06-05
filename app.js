@@ -4,6 +4,7 @@ const cookieParser = require('cookie-parser')
 const logger = require('morgan')
 const favicon = require('serve-favicon')
 const session = require('express-session')
+const passport = require('passport')
 
 const app = express()
 
@@ -32,14 +33,9 @@ app.use(
 app.use(cookieParser())
 app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')))
 app.use(express.static(path.join(__dirname, 'public')))
-
-function isLogged(req, res, next) {
-  if (req.session.uid) {
-    next()
-  } else {
-    res.render('user/login')
-  }
-}
+app.use(passport.initialize())
+app.use(passport.session())
+require('./fn/passport')(passport)
 
 const indexRouter = require('./routes/index.route')
 const usersRouter = require('./routes/user.route')
@@ -50,7 +46,7 @@ const cartRouter = require('./routes/cart.route')
 const orderRouter = require('./routes/order.route')
 
 app.use('/', indexRouter)
-app.use('/tai-khoan', isLogged, usersRouter)
+app.use('/tai-khoan', usersRouter)
 app.use('/san-pham', productRouter)
 app.use('/danh-muc', categoryRouter)
 app.use('/thuong-hieu', brandRouter)

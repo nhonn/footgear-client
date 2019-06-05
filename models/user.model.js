@@ -44,31 +44,24 @@ userSchema.pre('save', async function() {
   this.password = await bcrypt.hash(this.password, 5)
 })
 
-// bcrypt.compare(body.password, doc.password
-userSchema.statics.checkPassword = async function(email, password) {
-  let result = await this.model('User').findOne(
-    { email: email },
-    (err, doc) => {
-      if (err) console.log(err)
-      if (doc == null) return false
-      else {
-        bcrypt.compare(password, doc.password, (err, result) => {
-          if (err) console.log(err)
-          return result
-        })
-      }
-    }
-  )
-  console.log(result)
-  return result
+userSchema.statics.get = async function(email) {
+  return await this.model('User').findOne({ email })
+}
+
+userSchema.statics.check = async function(email) {
+  const user = await this.model('User').findOne({ email })
+  if (user != null) return true
+  return false
+}
+
+userSchema.statics.verify = async function(email, password) {
+  const user = await this.model('User').get(email)
+  if (user == null) return false
+  return await bcrypt.compare(password, user.password)
 }
 
 userSchema.methods.changePassword = async function(newPassword) {
   this.password = await bcrypt.hash(newPassword, 5)
-}
-
-userSchema.query.findAllClients = function() {
-  return this.model('User').find({ role: 0 })
 }
 
 const User = mongoose.model('User', userSchema)
