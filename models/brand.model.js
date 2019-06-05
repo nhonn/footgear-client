@@ -3,6 +3,7 @@ const mongoose = require('mongoose')
 const slug = require('mongoose-slug-updater')
 mongoose.plugin(slug)
 const Schema = mongoose.Schema
+const Product = require('./product.model')
 
 const brandSchema = new Schema({
   brandID: {
@@ -24,6 +25,14 @@ const brandSchema = new Schema({
     default: Date.now
   }
 })
+
+brandSchema.methods.findBrandProducts = async function() {
+  return Product.find({ brandID: this.brandID })
+}
+
+brandSchema.statics.findAll = async function() {
+  return this.model('Brand').find({})
+}
 
 const Brand = mongoose.model('Brand', brandSchema)
 module.exports = Brand

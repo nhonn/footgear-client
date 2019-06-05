@@ -50,7 +50,7 @@ main {
 
 .paper {
   margin: 0.25rem auto;
-  padding: 0.5rem;
+  padding: 1rem;
   background: white;
   box-shadow: 0 0 5px hsl(0, 0%, 90%);
 }

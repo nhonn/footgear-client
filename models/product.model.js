@@ -48,5 +48,19 @@ const productSchema = new Schema({
   }
 })
 
+productSchema.statics.findNewArrivals = async function() {
+  return this.model('Product').find({}, null, {
+    limit: 10,
+    sort: { updated_at: -1 }
+  })
+}
+
+productSchema.statics.findHotItems = async function() {
+  return this.model('Product').find({}, null, {
+    limit: 10,
+    sort: { noOfPurchased: -1 }
+  })
+}
+
 const Product = mongoose.model('Product', productSchema)
 module.exports = Product

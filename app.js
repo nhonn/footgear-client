@@ -3,8 +3,7 @@ const path = require('path')
 const cookieParser = require('cookie-parser')
 const logger = require('morgan')
 const favicon = require('serve-favicon')
-const session = require('cookie-session')
-require('./fn/dbconnect')
+const session = require('express-session')
 
 const app = express()
 
@@ -21,9 +20,13 @@ app.use(
 )
 app.use(
   session({
-    name: 'session',
-    keys: ['onion ninja'],
-    maxAge: 60 * 1000 // 1 mins
+    secret: 'keyboard cat',
+    resave: true,
+    saveUninitialized: true,
+    cookie: {
+      path: '/',
+      maxAge: 24 * 60 * 60 * 1000
+    }
   })
 )
 app.use(cookieParser())

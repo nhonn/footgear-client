@@ -1,20 +1,13 @@
-const Product = require('../models/product.model')
 const Brand = require('../models/brand.model')
 
 module.exports = {
   getBrand: async (req, res) => {
-    let brand = await Brand.findOne({ slug: req.params.id }, (err, res) => {
-      if (err) console.log(err)
-      return res
-    })
+    const brand = await Brand.findOne({ slug: req.params.id })
     if (brand == null) {
       res.status(404).render('error404')
     }
-    let list = await Product.find({ brandID: brand.brandID }, (err, res) => {
-      if (err) console.log(err)
-      return res
-    })
-    res.status(200).render('brand/index', {
+    const list = await brand.findBrandProducts()
+    res.status(200).render('brand', {
       list: list,
       title: brand.name,
       brand: brand

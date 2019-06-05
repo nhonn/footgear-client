@@ -1,5 +1,5 @@
 module.exports = {
   getOrder: (req, res) => {
-    res.status(200).render('order/index')
+    res.status(200).render('order')
   }
 }
