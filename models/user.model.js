@@ -23,12 +23,7 @@ const userSchema = new Schema({
     type: String,
     required: true
   },
-  // 0: Client, 1: Admin
-  role: {
-    type: Boolean,
-    default: 0,
-    required: true
-  },
+  phone: String,
   isDeleted: {
     type: Boolean,
     default: 0,
@@ -48,6 +43,7 @@ userSchema.pre('save', async function() {
   if (this.isModified('password')) {
     this.password = await bcrypt.hash(this.password, 5)
   }
+  this.updated_at = Date.now()
 })
 
 userSchema.statics.get = async function(email) {

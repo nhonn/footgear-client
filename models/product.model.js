@@ -10,10 +10,6 @@ const productSchema = new Schema({
     required: true,
     default: Date.now
   },
-  categoryID: {
-    type: String,
-    required: true
-  },
   brandID: {
     type: String,
     required: true

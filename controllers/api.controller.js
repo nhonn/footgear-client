@@ -26,13 +26,13 @@ module.exports = {
         user.fullname = req.query.name
         user.gender = req.query.gender === 'male' ? 0 : 1
         user.password = req.query.newPass
-        user.updated_at = Date.now()
+        user.phone = req.query.phone
         user.save(() => res.status(200).json('success'))
       } else res.status(304).json('fail')
     } else {
       user.fullname = req.query.name
       user.gender = req.query.gender === 'male' ? 0 : 1
-      user.updated_at = Date.now()
+      user.phone = req.query.phone
       user.save(() => res.status(200).json('success'))
     }
   }
