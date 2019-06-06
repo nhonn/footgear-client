@@ -5,6 +5,7 @@ router
   .route('/')
   .get(ctrl.getCart)
   .post(ctrl.addItems)
-  .delete(ctrl.removeItem)
+
+router.post('/rm', ctrl.removeItem)
 
 module.exports = router

@@ -8,7 +8,7 @@
   <div class="d-flex justify-content-between">
     <div class="paper flat col-6">
       <div class="owl-carousel owl-theme" id="banner">
-        <div class="item"><img src={{item.imgs}} /></div>
+        <div class="item"><img src={{item.imgUrls}} /></div>
       </div>
     </div>
     <div class="paper col-6">
@@ -26,8 +26,10 @@
         </select>
       </div>
       <br />
-      <a class="btn btn-primary" href="/gio-hang?id={{item.id}},size={{item.size}}">Thêm
-        vào giỏ hàng</a>
+      <form method="post" action="/gio-hang?id={{item.productID}}&size=42" class="inline">
+        <button class="btn btn-primary dark" type="submit">Thêm
+          vào giỏ hàng</button>
+      </form>
     </div>
   </div>
   <br />

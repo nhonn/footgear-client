@@ -11,7 +11,6 @@ module.exports = {
       '/img/banners/nadine-shaabana-144431.jpg'
     ]
     const brands = await Brand.findAll()
-    console.log(brands)
     const newArrivals = await Product.findNewArrivals()
     const hotItems = await Product.findHotItems()
     res.status(200).render('index', {

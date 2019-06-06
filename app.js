@@ -1,10 +1,11 @@
 const express = require('express')
 const path = require('path')
-const cookieParser = require('cookie-parser')
 const logger = require('morgan')
 const favicon = require('serve-favicon')
 const session = require('express-session')
 const passport = require('passport')
+const mongoose = require('mongoose')
+const MongoStore = require('connect-mongo')(session)
 
 const app = express()
 
@@ -12,6 +13,7 @@ const app = express()
 app.set('views', path.join(__dirname, 'views'))
 app.set('view engine', 'hbs')
 
+app.set('trust proxy', 1)
 app.use(logger('dev'))
 app.use(express.json())
 app.use(
@@ -22,20 +24,19 @@ app.use(
 app.use(
   session({
     secret: 'keyboard cat',
-    resave: true,
-    saveUninitialized: true,
-    cookie: {
-      path: '/',
-      maxAge: 24 * 60 * 60 * 1000
-    }
+    saveUninitialized: false,
+    resave: false,
+    store: new MongoStore({
+      mongooseConnection: mongoose.connection,
+      ttl: 24 * 60 * 60
+    })
   })
 )
-app.use(cookieParser())
-app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')))
-app.use(express.static(path.join(__dirname, 'public')))
 app.use(passport.initialize())
 app.use(passport.session())
 require('./fn/passport')(passport)
+app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')))
+app.use(express.static(path.join(__dirname, 'public')))
 
 const indexRouter = require('./routes/index.route')
 const usersRouter = require('./routes/user.route')
@@ -44,6 +45,7 @@ const categoryRouter = require('./routes/category.route')
 const brandRouter = require('./routes/brand.route')
 const cartRouter = require('./routes/cart.route')
 const orderRouter = require('./routes/order.route')
+const apiRouter = require('./routes/api.router')
 
 app.use('/', indexRouter)
 app.use('/tai-khoan', usersRouter)
@@ -52,6 +54,7 @@ app.use('/danh-muc', categoryRouter)
 app.use('/thuong-hieu', brandRouter)
 app.use('/gio-hang', cartRouter)
 app.use('/don-hang', orderRouter)
+app.use('/api', apiRouter)
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

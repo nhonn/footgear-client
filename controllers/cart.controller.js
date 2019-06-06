@@ -1,28 +1,24 @@
 const Product = require('../models/product.model')
-const sessionStorage = require('sessionstorage')
 
-function getCart() {
-  let cart = sessionStorage.getItem('cart')
-  if (cart === undefined || cart == null) cart = { items: [], total: 0 }
+function getCart(req) {
+  let cart = req.session.cart
+  if (cart == null || cart === undefined) {
+    cart = { items: [], total: 0 }
+    req.session.cart = cart
+  }
   return cart
 }
 
 module.exports = {
   getCart: (req, res) => {
-    const cart = getCart()
+    const cart = getCart(req)
     res.status(200).render('cart', { title: 'Giỏ hàng', cart: cart })
   },
 
   addItems: async (req, res) => {
-    let product = await Product.findOne(
-      { productID: req.query.id },
-      (err, doc) => {
-        if (err) console.log(err)
-        if (doc == null) res.status(404).render('error404')
-        return doc
-      }
-    )
-    let cart = getCart()
+    let cart = getCart(req)
+    const product = await Product.findOne({ productID: req.query.id })
+    if (product == null) res.status(404).render('error404')
     cart.items.push({
       name: product.name,
       productID: product.productID,
@@ -31,15 +27,19 @@ module.exports = {
       imgUrls: product.imgUrls
     })
     cart.total += Number.parseInt(product.price)
-    sessionStorage.setItem('cart', cart)
-    res.json({ success: true })
+    req.session.cart = cart
+    res.json({ sucess: true })
   },
 
   removeItem: (req, res) => {
-    let cart = getCart()
-    cart.items.filter(obj => {
-      return obj.id !== req.query.id
+    let cart = getCart(req)
+    cart.items = cart.items.filter(x => x.productID !== req.query.id)
+    cart.total = 0
+    cart.items.forEach(x => {
+      cart.total += Number.parseInt(x.price)
     })
-    sessionStorage.set('cart', cart)
+    console.log(cart)
+    req.session.cart = cart
+    res.redirect(req.get('referrer'))
   }
 }
