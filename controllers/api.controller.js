@@ -1,20 +1,12 @@
 const User = require('../models/user.model')
 
 module.exports = {
-  getLoginPage: (req, res) => {
-    res.status(200).render('user/login', { title: 'Đăng nhập' })
-  },
-
-  getRegisterPage: (req, res) => {
-    res.status(200).render('user/register', { title: 'Đăng ký tài khoản' })
-  },
-
-  registerNewUser: (req, res) => {
+  signup: (req, res) => {
     const newUser = new User({
       userID: Date.now(),
       email: req.body.email,
       fullname: req.body.fullname,
-      password: req.body.pass1
+      password: req.body.password
     })
 
     newUser.save((err, newUser) => {
@@ -22,8 +14,26 @@ module.exports = {
       else res.status(200).redirect('/tai-khoan/dang-nhap')
     })
   },
-
-  getProfilePage: (req, res) => {
-    res.status(200).render('user/profile', { title: 'Thông tin tài khoản' })
+  signout: (req, res) => {
+    req.logout()
+    req.session.layout = 'layout'
+    res.redirect('/')
+  },
+  update: async (req, res) => {
+    let user = req.user
+    if (req.query.oldPass || req.query.newPass || req.query.rePass) {
+      if (User.verify(user.email, req.query.oldPass)) {
+        user.fullname = req.query.name
+        user.gender = req.query.gender === 'male' ? 0 : 1
+        user.password = req.query.newPass
+        user.updated_at = Date.now()
+        user.save(() => res.status(200).json('success'))
+      } else res.status(304).json('fail')
+    } else {
+      user.fullname = req.query.name
+      user.gender = req.query.gender === 'male' ? 0 : 1
+      user.updated_at = Date.now()
+      user.save(() => res.status(200).json('success'))
+    }
   }
 }

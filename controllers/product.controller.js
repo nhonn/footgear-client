@@ -11,7 +11,8 @@ module.exports = {
       title: item.name,
       item: item,
       brand: brand,
-      sameBrand: sameBrand
+      sameBrand: sameBrand,
+      layout: req.session.layout
     })
   }
 }

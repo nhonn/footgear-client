@@ -12,7 +12,11 @@ function getCart(req) {
 module.exports = {
   getCart: (req, res) => {
     const cart = getCart(req)
-    res.status(200).render('cart', { title: 'Giỏ hàng', cart: cart })
+    res.status(200).render('cart', {
+      title: 'Giỏ hàng',
+      cart: cart,
+      layout: req.session.layout
+    })
   },
 
   addItems: async (req, res) => {
@@ -38,7 +42,6 @@ module.exports = {
     cart.items.forEach(x => {
       cart.total += Number.parseInt(x.price)
     })
-    console.log(cart)
     req.session.cart = cart
     res.redirect(req.get('referrer'))
   }

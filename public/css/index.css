@@ -40,7 +40,7 @@ footer a {
 }
 
 main {
-  min-height: 72vh;
+  min-height: 70vh;
   margin: 1rem auto;
 }
 
@@ -105,4 +105,13 @@ h5 span {
     #243b55,
     #141e30
   ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+.dropdown:hover .dropdown-menu {
+  display: block;
+  margin-top: 0px;
+}
+
+section {
+  min-height: 70vh;
 }

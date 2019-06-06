@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable no-undef */
 $('#banner').owlCarousel({
   loop: true,
@@ -27,4 +28,24 @@ $('.owl-carousel').owlCarousel({
   }
 })
 
+// lazy loading images
 $('.lazy').Lazy()
+
+// hide change password form
+$(function() {
+  $('#checkbox').change(function() {
+    if ($(this).is(':checked')) {
+      $('#changePassword').prop('hidden', false)
+    } else {
+      $('#changePassword').prop('hidden', true)
+    }
+  })
+})
+
+function editProfile() {
+  const data = $('form').serialize()
+  $.post('/api/update?' + data, function(data, status) {
+    if (status === 200) location.reload()
+    else if (status === 304) alert('Không thể thay đổi thông tin')
+  })
+}

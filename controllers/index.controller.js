@@ -18,7 +18,8 @@ module.exports = {
       banners: banners,
       brands: brands,
       hotItems: hotItems,
-      newArrivals: newArrivals
+      newArrivals: newArrivals,
+      layout: req.session.layout
     })
   }
 }

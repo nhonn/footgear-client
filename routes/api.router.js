@@ -4,12 +4,16 @@ const passport = require('passport')
 
 router.post(
   '/signin',
-  passport.authenticate('local', { failureRedirect: '/tai-khoan/dang-nhap' }),
-  function(req, res) {
-    res.redirect('/')
-  }
+  passport.authenticate('local', {
+    successRedirect: '/',
+    failureRedirect: '/tai-khoan/dang-nhap'
+  })
 )
 
-router.post('/signup', ctrl.registerNewUser)
+router.post('/update', ctrl.update)
+
+router.post('/signup', ctrl.signup)
+
+router.get('/signout', ctrl.signout)
 
 module.exports = router

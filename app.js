@@ -38,6 +38,16 @@ require('./fn/passport')(passport)
 app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')))
 app.use(express.static(path.join(__dirname, 'public')))
 
+app.use(function(req, res, next) {
+  if (req.user) {
+    req.session.layout = 'signedInLayout'
+    next()
+  } else {
+    req.session.layout = 'layout'
+    next()
+  }
+})
+
 const indexRouter = require('./routes/index.route')
 const usersRouter = require('./routes/user.route')
 const productRouter = require('./routes/product.route')
@@ -56,10 +66,7 @@ app.use('/gio-hang', cartRouter)
 app.use('/don-hang', orderRouter)
 app.use('/api', apiRouter)
 
-// catch 404 and forward to error handler
-app.use(function(req, res, next) {
-  res.status(404).render('error404')
-})
+// change layout when signed in
 
 // error handler
 app.use(function(err, req, res) {
@@ -68,8 +75,15 @@ app.use(function(err, req, res) {
   res.locals.error = req.app.get('env') === 'development' ? err : {}
 
   // render the error page
-  res.status(err.status || 500)
-  res.render('error')
+  if (err.status === 404) {
+    res.status(404).render('error404', {
+      title: 'Trang bạn tìm kiếm không tồn tại',
+      layout: req.session.layout
+    })
+  } else {
+    res.status(err.status || 500)
+    res.render('error')
+  }
 })
 
 module.exports = app

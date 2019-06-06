@@ -37,11 +37,17 @@ const userSchema = new Schema({
   created_at: {
     type: Date,
     default: Date.now
+  },
+  update_at: {
+    type: Date,
+    default: Date.now
   }
 })
 
 userSchema.pre('save', async function() {
-  this.password = await bcrypt.hash(this.password, 5)
+  if (this.isModified('password')) {
+    this.password = await bcrypt.hash(this.password, 5)
+  }
 })
 
 userSchema.statics.get = async function(email) {
@@ -58,10 +64,6 @@ userSchema.statics.verify = async function(email, password) {
   const user = await this.model('User').get(email)
   if (user == null) return false
   return await bcrypt.compare(password, user.password)
-}
-
-userSchema.methods.changePassword = async function(newPassword) {
-  this.password = await bcrypt.hash(newPassword, 5)
 }
 
 const User = mongoose.model('User', userSchema)
