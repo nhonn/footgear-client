@@ -1,5 +1,7 @@
 module.exports = {
-  getCategory: (req, res) => {
-    res.status(200).render("category/index");
+  getOrder: (req, res) => {
+    res.status(200).render('order', {
+      layout: req.session.layout
+    })
   }
-};
+}

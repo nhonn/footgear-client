@@ -1,16 +1,16 @@
 const router = require('express').Router()
 const ctrl = require('../controllers/user.controller')
 
-router
-  .route('/dang-nhap')
-  .get(ctrl.getLoginPage)
-  .post(ctrl.clientLogin)
+function isSignedIn(req, res, next) {
+  if (req.user) {
+    next()
+  } else res.redirect('/tai-khoan/dang-nhap')
+}
 
-router
-  .route('/dang-ky')
-  .get(ctrl.getRegisterPage)
-  .post(ctrl.registerNewUser)
+router.get('/', isSignedIn, ctrl.getProfilePage)
 
-router.get('/', ctrl.getProfilePage)
+router.get('/dang-nhap', ctrl.getLoginPage)
+
+router.get('/dang-ky', ctrl.getRegisterPage)
 
 module.exports = router

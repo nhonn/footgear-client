@@ -1,6 +1,11 @@
-const router = require("express").Router();
-const ctrl = require("../controllers/index.controller");
+const router = require('express').Router()
+const ctrl = require('../controllers/cart.controller')
 
-router.get("/", ctrl.getHomepage);
+router
+  .route('/')
+  .get(ctrl.getCart)
+  .post(ctrl.addItems)
 
-module.exports = router;
+router.post('/rm', ctrl.removeItem)
+
+module.exports = router

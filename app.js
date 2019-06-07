@@ -1,10 +1,11 @@
 const express = require('express')
 const path = require('path')
-const cookieParser = require('cookie-parser')
 const logger = require('morgan')
 const favicon = require('serve-favicon')
-const session = require('cookie-session')
-require('./fn/dbconnect')
+const session = require('express-session')
+const passport = require('passport')
+const mongoose = require('mongoose')
+const MongoStore = require('connect-mongo')(session)
 
 const app = express()
 
@@ -12,6 +13,7 @@ const app = express()
 app.set('views', path.join(__dirname, 'views'))
 app.set('view engine', 'hbs')
 
+app.set('trust proxy', 1)
 app.use(logger('dev'))
 app.use(express.json())
 app.use(
@@ -21,35 +23,48 @@ app.use(
 )
 app.use(
   session({
-    name: 'session',
-    keys: ['onion ninja'],
-    maxAge: 60 * 1000 // 1 mins
+    secret: 'keyboard cat',
+    saveUninitialized: false,
+    resave: false,
+    store: new MongoStore({
+      mongooseConnection: mongoose.connection,
+      ttl: 24 * 60 * 60
+    })
   })
 )
-app.use(cookieParser())
+app.use(passport.initialize())
+app.use(passport.session())
+require('./fn/passport')(passport)
 app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')))
 app.use(express.static(path.join(__dirname, 'public')))
 
-function isLogged(req, res, next) {
-  if (req.session.uid) {
+app.use(function(req, res, next) {
+  if (req.user) {
+    req.session.layout = 'signedInLayout'
     next()
   } else {
-    res.render('user/login')
+    req.session.layout = 'layout'
+    next()
   }
-}
+})
 
 const indexRouter = require('./routes/index.route')
 const usersRouter = require('./routes/user.route')
 const productRouter = require('./routes/product.route')
+const brandRouter = require('./routes/brand.route')
+const cartRouter = require('./routes/cart.route')
+const orderRouter = require('./routes/order.route')
+const apiRouter = require('./routes/api.router')
 
 app.use('/', indexRouter)
-app.use('/tai-khoan', isLogged, usersRouter)
+app.use('/tai-khoan', usersRouter)
 app.use('/san-pham', productRouter)
+app.use('/thuong-hieu', brandRouter)
+app.use('/gio-hang', cartRouter)
+app.use('/don-hang', orderRouter)
+app.use('/api', apiRouter)
 
-// catch 404 and forward to error handler
-app.use(function(req, res, next) {
-  res.status(404).render('error404')
-})
+// change layout when signed in
 
 // error handler
 app.use(function(err, req, res) {
@@ -58,8 +73,15 @@ app.use(function(err, req, res) {
   res.locals.error = req.app.get('env') === 'development' ? err : {}
 
   // render the error page
-  res.status(err.status || 500)
-  res.render('error')
+  if (err.status === 404) {
+    res.status(404).render('error404', {
+      title: 'Trang bạn tìm kiếm không tồn tại',
+      layout: req.session.layout
+    })
+  } else {
+    res.status(err.status || 500)
+    res.render('error')
+  }
 })
 
 module.exports = app

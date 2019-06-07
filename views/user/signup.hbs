@@ -1,0 +1,28 @@
+<section class="d-flex justify-content-center align-items-center">
+  <div class="paper col-md-3 col-sm-7">
+    <h4 class="text-center">Đăng ký</h4>
+    <hr />
+    <form method="post" action="/api/signup" enctype="application/x-www-form-urlencoded">
+      <div class="form-group">
+        <label for="name">Họ tên</label>
+        <input type="text" class="form-control" name="name" placeholder="Họ và tên" />
+      </div>
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input type="email" class="form-control" name="email" placeholder="Nhập email" />
+      </div>
+      <div class="form-group">
+        <label for="pasword">Mật khẩu</label>
+        <input type="password" class="form-control" name="password" placeholder="Nhập mật khẩu của bạn" />
+      </div>
+      <div class="form-group">
+        <label for="pasword">Nhập lại mật khẩu</label>
+        <input type="password" class="form-control" name="repass" placeholder="Nhập lại mật khẩu của bạn" />
+      </div>
+      <hr />
+      <div class="d-flex justify-content-between">
+        <a class="btn" href="/tai-khoan/dang-nhap">Đã có tài khoản</a>
+        <input type="submit" value="Đăng ký" class="btn btn-success"></input>
+      </div>
+  </div>
+</section>

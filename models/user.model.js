@@ -6,7 +6,8 @@ const bcrypt = require('bcrypt')
 const userSchema = new Schema({
   userID: {
     type: String,
-    required: true
+    required: true,
+    default: Date.now
   },
   fullname: String,
   gender: {
@@ -18,17 +19,11 @@ const userSchema = new Schema({
     type: String,
     required: true
   },
-  birthYear: Number,
   password: {
     type: String,
     required: true
   },
-  // 0: Client, 1: Admin
-  role: {
-    type: Boolean,
-    default: 0,
-    required: true
-  },
+  phone: String,
   isDeleted: {
     type: Boolean,
     default: 0,
@@ -37,38 +32,34 @@ const userSchema = new Schema({
   created_at: {
     type: Date,
     default: Date.now
+  },
+  update_at: {
+    type: Date,
+    default: Date.now
   }
 })
 
 userSchema.pre('save', async function() {
-  this.password = await bcrypt.hash(this.password, 5)
+  if (this.isModified('password')) {
+    this.password = await bcrypt.hash(this.password, 5)
+  }
+  this.updated_at = Date.now()
 })
 
-// bcrypt.compare(body.password, doc.password
-userSchema.statics.checkPassword = async function(email, password) {
-  let result = await this.model('User').findOne(
-    { email: email },
-    (err, doc) => {
-      if (err) console.log(err)
-      if (doc == null) return false
-      else {
-        bcrypt.compare(password, doc.password, (err, result) => {
-          if (err) console.log(err)
-          return result
-        })
-      }
-    }
-  )
-  console.log(result)
-  return result
+userSchema.statics.get = async function(email) {
+  return await this.model('User').findOne({ email })
 }
 
-userSchema.methods.changePassword = async function(newPassword) {
-  this.password = await bcrypt.hash(newPassword, 5)
+userSchema.statics.check = async function(email) {
+  const user = await this.model('User').findOne({ email })
+  if (user != null) return true
+  return false
 }
 
-userSchema.query.findAllClients = function() {
-  return this.model('User').find({ role: 0 })
+userSchema.statics.verify = async function(email, password) {
+  const user = await this.model('User').get(email)
+  if (user == null) return false
+  return await bcrypt.compare(password, user.password)
 }
 
 const User = mongoose.model('User', userSchema)

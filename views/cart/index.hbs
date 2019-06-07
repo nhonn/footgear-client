@@ -1,0 +1,42 @@
+<div class="container">
+  <br>
+  <h5>Giỏ hàng của bạn:</h5>
+  {{#if cart.items}}
+  <table class="table">
+    <thead class="thead-dark">
+      <tr class="d-flex text-right">
+        <th class="col-3 text-left">Sản phẩm</th>
+        <th class="col-3"></th>
+        <th class="col-2">Size</th>
+        <th class="col-2">Số tiền</th>
+        <th class="col-2"></th>
+      </tr>
+    </thead>
+    <tbody>
+      {{#each cart.items}}
+      <tr class="d-flex align-items-center border-top">
+        <td class="col-3 border-top-0 "><img src="{{this.imgUrls}}" style="max-width: 100%" /></td>
+        <td class="col-3 border-top-0 ">{{this.name}}</td>
+        <td class="col-2 border-top-0 text-right">{{this.size}}</td>
+        <td class="col-2 border-top-0 text-right">{{this.price}}</td>
+        <td class="col-2 border-top-0 text-center">
+          <form method="post" action="/gio-hang/rm?id={{this.productID}}" class="inline">
+            <button type="submit" class="btn btn-primary"><i class="far fa-trash-alt"></i>
+            </button>
+          </form>
+        </td>
+      </tr>
+      {{/each}}
+    </tbody>
+  </table>
+  <div class="text-right">
+    <div class="form-group">
+      <label>Tổng hóa đơn</label>
+      <input class="form-control ml-auto" style="max-width: 10%;" value="{{cart.total}}" disabled />
+    </div>
+    <a class="btn btn-primary" href="/don-hang/thanh-toan">Thanh toán</a>
+  </div>
+  {{else}}
+  Hiện bạn chưa chọn sản phẩm nào vào giỏ hàng.
+  {{/if}}
+</div>

@@ -1,0 +1,24 @@
+<div class="container">
+  <nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item">Thương hiệu</li>
+      <li class="breadcrumb-item active" aria-current="page">{{brand.name}}</li>
+    </ol>
+  </nav>
+  {{#if list}}
+  <div class="row flex-wrap">
+    {{#each list}}
+    <a href="/san-pham/{{this.slug}}" class="col-3">
+      <div class="paper">
+        <img class="lazy" data-src={{this.imgUrls}} style="max-width: 100%">
+        <hr>
+        <h6>{{this.name}}</h6>
+        <p class="price">{{this.price}} ₫</p>
+      </div>
+    </a>
+    {{/each}}
+  </div>
+  {{else}}
+  Hiện không có sản phẩm nào thuộc danh mục này.
+  {{/if}}
+</div>
