@@ -43,7 +43,7 @@ userSchema.pre('save', async function() {
   if (this.isModified('password')) {
     this.password = await bcrypt.hash(this.password, 5)
   }
-  this.updated_at = Date.now()
+  this.updated_at = Date.now
 })
 
 userSchema.statics.get = async function(email) {

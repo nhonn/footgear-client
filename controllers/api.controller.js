@@ -5,7 +5,7 @@ module.exports = {
     const newUser = new User({
       userID: Date.now(),
       email: req.body.email,
-      fullname: req.body.fullname,
+      fullname: req.body.name,
       password: req.body.password
     })
 
