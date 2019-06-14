@@ -14,8 +14,7 @@ module.exports = {
     const cart = getCart(req)
     res.status(200).render('cart', {
       title: 'Giỏ hàng',
-      cart: cart,
-      layout: req.session.layout
+      cart
     })
   },
 

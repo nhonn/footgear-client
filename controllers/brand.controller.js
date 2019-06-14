@@ -8,10 +8,9 @@ module.exports = {
     } else {
       const list = await brand.findBrandProducts()
       res.status(200).render('brand', {
-        list: list,
         title: brand.name,
-        brand: brand,
-        layout: req.session.layout
+        list,
+        brand
       })
     }
   }

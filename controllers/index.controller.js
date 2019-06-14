@@ -13,13 +13,24 @@ module.exports = {
     const brands = await Brand.findAll()
     const newArrivals = await Product.findNewArrivals()
     const hotItems = await Product.findHotItems()
-    res.status(200).render('index', {
+    res.status(200).render('home', {
       title: 'Sneakiie: Trang chủ',
-      banners: banners,
-      brands: brands,
-      hotItems: hotItems,
-      newArrivals: newArrivals,
-      layout: req.session.layout
+      banners,
+      brands,
+      hotItems,
+      newArrivals
+    })
+  },
+
+  getTermsPage: (req, res) => {
+    res.status(200).render('home/terms', {
+      title: 'Điều khoản sử dụng'
+    })
+  },
+
+  getSearchPage: (req, res) => {
+    res.status(200).render('home/search', {
+      title: 'Tìm kiếm'
     })
   }
 }

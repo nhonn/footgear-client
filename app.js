@@ -12,7 +12,6 @@ const app = express()
 // view engine setup
 app.set('views', path.join(__dirname, 'views'))
 app.set('view engine', 'hbs')
-
 app.set('trust proxy', 1)
 app.use(logger('dev'))
 app.use(express.json())
@@ -28,7 +27,7 @@ app.use(
     resave: false,
     store: new MongoStore({
       mongooseConnection: mongoose.connection,
-      ttl: 24 * 60 * 60
+      ttl: 60 * 60
     })
   })
 )
@@ -38,16 +37,6 @@ require('./fn/passport')(passport)
 app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')))
 app.use(express.static(path.join(__dirname, 'public')))
 
-app.use(function(req, res, next) {
-  if (req.user) {
-    req.session.layout = 'signedInLayout'
-    next()
-  } else {
-    req.session.layout = 'layout'
-    next()
-  }
-})
-
 const indexRouter = require('./routes/index.route')
 const usersRouter = require('./routes/user.route')
 const productRouter = require('./routes/product.route')
@@ -56,6 +45,13 @@ const cartRouter = require('./routes/cart.route')
 const orderRouter = require('./routes/order.route')
 const apiRouter = require('./routes/api.router')
 
+// change layouts
+app.use('/*', function(req, res, next) {
+  if (req.user) req.app.locals.layout = 'layouts/signedIn'
+  else req.app.locals.layout = 'layouts/default'
+  next()
+})
+
 app.use('/', indexRouter)
 app.use('/tai-khoan', usersRouter)
 app.use('/san-pham', productRouter)
@@ -63,8 +59,6 @@ app.use('/thuong-hieu', brandRouter)
 app.use('/gio-hang', cartRouter)
 app.use('/don-hang', orderRouter)
 app.use('/api', apiRouter)
-
-// change layout when signed in
 
 // error handler
 app.use(function(err, req, res) {
@@ -75,8 +69,7 @@ app.use(function(err, req, res) {
   // render the error page
   if (err.status === 404) {
     res.status(404).render('error404', {
-      title: 'Trang bạn tìm kiếm không tồn tại',
-      layout: req.session.layout
+      title: 'Trang bạn tìm kiếm không tồn tại'
     })
   } else {
     res.status(err.status || 500)

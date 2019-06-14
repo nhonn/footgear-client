@@ -16,7 +16,6 @@ module.exports = {
   },
   signout: (req, res) => {
     req.logout()
-    req.session.layout = 'layout'
     res.redirect('/')
   },
   update: async (req, res) => {

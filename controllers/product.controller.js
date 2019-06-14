@@ -9,10 +9,9 @@ module.exports = {
     const sameBrand = await brand.findBrandProducts()
     res.status(200).render('product', {
       title: item.name,
-      item: item,
-      brand: brand,
-      sameBrand: sameBrand,
-      layout: req.session.layout
+      item,
+      brand,
+      sameBrand
     })
   }
 }
