@@ -1,4 +1,4 @@
-<div class="container">
+<section class="container">
   <nav aria-label="breadcrumb">
     <ol class="breadcrumb">
       <li class="breadcrumb-item"><a href="/thuong-hieu/{{brand.slug}}">{{brand.name}}</a></li>
@@ -6,33 +6,89 @@
     </ol>
   </nav>
   <div class="d-flex justify-content-between">
-    <div class="paper flat col-6">
+    <div class="paper flat col-5">
       <div class="owl-carousel owl-theme" id="banner">
-        <div class="item"><img src={{item.imgUrls}} /></div>
+        <div class="item"><img src={{item.images}} /></div>
       </div>
     </div>
     <div class="paper col-6">
       <h4>{{item.name}}</h4>
-      <p>Thương hiệu: <a href="/thuong-hieu/{{brand.slug}}">{{brand.name}}</a></p>
-      <h6 class="price">{{item.price}} ₫</h6>
-      {{{item.description}}}
-      <hr />
-      <div>
-        <p>Kích cỡ: </p>
-        <select class="form-control w-25">
-          {{#each item.size}}
-          <option>{{this}}</option>
-          {{/each}}
-        </select>
+      <hr>
+      <div class="d-flex">
+        <p>Thương hiệu:</p>
+        <a class="col" href="/thuong-hieu/{{brand.slug}}">{{brand.name}}</a>
       </div>
-      <br />
-      <form method="post" action="/gio-hang?id={{item.productID}}&size=42" class="inline">
-        <button class="btn btn-primary dark" type="submit">Thêm
+      <p class="price" style="font-size: 1.5rem;">{{item.price}} ₫</p>
+      <hr>
+      <form>
+        <div class="d-flex form-group">
+          <label>Kích cỡ:</label>
+          <select class="form-control col-2" name="size">
+            {{#each item.size}}
+            <option>{{this}}</option>
+            {{/each}}
+          </select>
+        </div>
+        <br />
+        <button class="btn btn-primary dark w-50" type="submit">Thêm
           vào giỏ hàng</button>
       </form>
+      <hr>
+      <div class="d-flex">
+        <p>Lượt xem:</p>
+        <p class="col">{{item.views}}</p>
+      </div>
     </div>
   </div>
   <br />
+  <nav class="paper d-flex justify-content-around">
+    <button id="desButton" class="btn btn-default col-6" onclick="onDescription()" style="color: white;
+        background: linear-gradient(to right, #243b55, #141e30);">Mô tả sản phẩm</button>
+    <button id="reviewButton" class="btn col-6" onclick="onReview()">Đánh giá</button>
+  </nav>
+  <div class="paper" id="Description">
+    {{{item.description}}}
+  </div>
+  <div class="paper" id="Review" hidden>
+    <div class="d-flex justify-content-end">
+      {{#if user}}
+      <button class="btn" onclick="addReview()"><i class="fas fa-plus-circle"></i> Thêm bình luận</button>
+      {{else}}
+      <a class="btn" href="/tai-khoan/dang-nhap"><i class="fas fa-plus-circle"></i> Đăng nhập để viết bình luận</a>
+      {{/if}}
+    </div>
+    <div id="addReview" hidden>
+      <form class="paper" action="/san-pham/addReview/{{item.productID}}" method="POST">
+        <div class="form-group d-flex">
+          <label class="col-3">Tên người dùng</label>
+          <div class="col-9">{{user.fullname}}</div>
+        </div>
+        <div class="form-group d-flex">
+          <label class="col-3">Nội dung đánh giá</label>
+          <textarea rows="3" name="content" class="col-9 form-control"></textarea>
+        </div>
+        <div class="d-flex justify-content-end">
+          <button type="submit" class="btn btn-primary">Xác nhận</button>
+          <button class="btn btn-default" type="reset" onclick="cancelReview()">Hủy</button>
+        </div>
+      </form>
+    </div>
+    {{#if reviews}}
+    {{#each reviews}}
+    <div class="paper" style="margin-bottom: 10px;">
+      <div class="d-flex justify-content-between">
+        <div>{{this.name}}</div>
+        <div>{{this.date}}</div>
+      </div>
+      <hr>
+      <div>{{this.content}}</div>
+    </div>
+    {{/each}}
+    {{else}}
+    Hiện chưa có bất kỳ đánh giá nào về sản phẩm này.
+    {{/if}}
+  </div>
+  <br>
   {{#if sameBrand}}
   <div class="paper">
     <h5><span>Sản phẩm cùng thương hiệu</span></h5>
@@ -40,7 +96,7 @@
     <div class="owl-carousel owl-theme">
       {{#each sameBrand}}
       <a href="/san-pham/{{this.slug}}">
-        <img src={{this.imgUrls}}>
+        <img src={{this.images}}>
         <h6>{{this.name}}</h6>
         <p class="price">{{this.price}} ₫</p>
       </a>
@@ -48,4 +104,5 @@
     </div>
   </div>
   {{/if}}
-</div>
+  <br>
+</section>

@@ -46,6 +46,12 @@ userSchema.pre('save', async function() {
   this.updated_at = Date.now
 })
 
+userSchema.statics.getName = async function(userID) {
+  let user = await this.model('User').findOne({ userID })
+  if (user) return user.fullname
+  return 'Khách hàng'
+}
+
 userSchema.statics.get = async function(email) {
   return await this.model('User').findOne({ email })
 }

@@ -42,6 +42,44 @@ $(function() {
   })
 })
 
+function addReview() {
+  $('#addReview').prop('hidden', false)
+}
+
+function cancelReview() {
+  $('#addReview').prop('hidden', true)
+}
+
+function onDescription() {
+  const primary = {
+    color: 'white',
+    background: 'linear-gradient(to right, #243b55, #141e30)'
+  }
+  const secondary = {
+    color: 'black',
+    background: 'white'
+  }
+  $('#desButton').css(primary)
+  $('#reviewButton').css(secondary)
+  $('#Description').prop('hidden', false)
+  $('#Review').prop('hidden', true)
+}
+
+function onReview() {
+  const primary = {
+    color: 'white',
+    background: 'linear-gradient(to right, #243b55, #141e30)'
+  }
+  const secondary = {
+    color: 'black',
+    background: 'white'
+  }
+  $('#desButton').css(secondary)
+  $('#reviewButton').css(primary)
+  $('#Description').prop('hidden', true)
+  $('#Review').prop('hidden', false)
+}
+
 function editProfile() {
   const data = $('form').serialize()
   $.post('/api/update?' + data, function(data, status) {

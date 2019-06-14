@@ -11,7 +11,7 @@
     <div class="owl-carousel owl-theme">
       {{#each newArrivals}}
       <a href="/san-pham/{{this.slug}}">
-        <img src={{this.imgUrls}}>
+        <img class="lazy" data-src={{this.images}}>
         <h6>{{this.name}}</h6>
         <p class="price">{{this.price}} ₫</p>
       </a>
@@ -26,7 +26,7 @@
     <div class="owl-carousel owl-theme">
       {{#each hotItems}}
       <a href="/san-pham/{{this.slug}}">
-        <img src={{this.imgUrls}}>
+        <img class="lazy" data-src={{this.images}}>
         <h6>{{this.name}}</h6>
         <p class="price">{{this.price}} ₫</p>
       </a>
