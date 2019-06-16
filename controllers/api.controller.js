@@ -14,10 +14,12 @@ module.exports = {
       else res.status(200).redirect('/tai-khoan/dang-nhap')
     })
   },
+
   signout: (req, res) => {
     req.logout()
     res.redirect('/')
   },
+
   update: async (req, res) => {
     let user = req.user
     if (req.query.oldPass || req.query.newPass || req.query.rePass) {

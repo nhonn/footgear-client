@@ -45,10 +45,13 @@ const cartRouter = require('./routes/cart.route')
 const orderRouter = require('./routes/order.route')
 const apiRouter = require('./routes/api.router')
 
-// change layouts
-app.use('/*', function(req, res, next) {
-  if (req.user) req.app.locals.layout = 'layouts/signedIn'
-  else req.app.locals.layout = 'layouts/default'
+app.use('*', function (req, res, next) {
+  if (req.user) {
+    req.app.locals.user = req.user
+  }
+  else {
+    req.app.locals.user = null
+  }
   next()
 })
 
@@ -61,7 +64,7 @@ app.use('/don-hang', orderRouter)
 app.use('/api', apiRouter)
 
 // error handler
-app.use(function(err, req, res) {
+app.use(function (err, req, res) {
   // set locals, only providing error in development
   res.locals.message = err.message
   res.locals.error = req.app.get('env') === 'development' ? err : {}

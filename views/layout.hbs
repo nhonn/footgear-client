@@ -32,11 +32,9 @@
         <li class="nav-item dropdown">
           <div class="btn text-light">Thương hiệu</div>
           <div class="dropdown-menu">
-            <a class="dropdown-item" href="/thuong-hieu/adidas">Adidas</a>
-            <a class="dropdown-item" href="/thuong-hieu/biti-s">Biti's</a>
-            <a class="dropdown-item" href="/thuong-hieu/converse">Converse</a>
-            <a class="dropdown-item" href="/thuong-hieu/nike">Nike</a>
-            <a class="dropdown-item" href="/thuong-hieu/vans">Vans</a>
+            {{#each brands}}
+            <a class="dropdown-item" href="/thuong-hieu/{{this.slug}}">{{this.name}}</a>
+            {{/each}}
           </div>
         </li>
       </ul>
@@ -49,12 +47,22 @@
       <a class="btn" href="/gio-hang">
         <i class="fas fa-shopping-cart"></i>
       </a>
+      {{#if user}}
+      <div class="nav-item dropdown">
+        <i class="btn btn-link fas fa-user" style="color: turquoise"></i>
+        <div class="dropdown-menu dropdown-menu-right">
+          <a class="dropdown-item" href="/tai-khoan">Thông tin tài khoản</a>
+          <a class="dropdown-item" href="/api/signout">Đăng xuất</a>
+        </div>
+      </div>
+      {{else}}
       <div class="nav-item dropdown">
         <i class="btn btn-link fas fa-user"></i>
         <div class="dropdown-menu dropdown-menu-right">
           <a class="dropdown-item" href="/tai-khoan/dang-nhap">Đăng nhập/ Đăng ký</a>
         </div>
       </div>
+      {{/if}}
     </div>
   </nav>
   <main>
@@ -67,7 +75,11 @@
         <h6>Hỗ trợ</h6>
         <ul class="nav flex-column">
           <li class="nav-item">
+            {{#if user}}
+            <a href="/tai-khoan">Quản lý tài khoản</a>
+            {{else}}
             <a href="/tai-khoan/dang-nhap">Đăng nhập/ Đăng ký</a>
+            {{/if}}
           </li>
           <li class="nav-item">
             <a href="/don-hang/lich-su">Lịch sử mua hàng</a>
