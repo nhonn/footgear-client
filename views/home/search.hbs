@@ -1,3 +1,46 @@
 <section class="container">
-
+  <div class="paper d-flex">
+    <aside class="col-3">
+      <form class="form">
+        <div class="form-group">
+          <label>Thương hiệu: </label>
+          <select name="brand" class="form-control">
+            <option value=""></option>
+            {{#each brands}}
+            <option value={{this.brandID}}>{{this.name}}</option>
+            {{/each}}
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Kích cỡ: </label>
+          <input name="size" class="form-control" type="number" min="34" max="49">
+        </div>
+        <div class="form-group">
+          <label>Khoảng giá: </label>
+          <input name="min" class="form-control" type="number" min="500000">
+          <span>-</span>
+          <input name="max" class="form-control" type="number" min="500000">
+        </div>
+        <button class="btn btn-info" type="submit">Xác nhận</button>
+      </form>
+    </aside>
+    <div class="col-9">
+      <h5>Kết quả tìm kiếm</h5>
+      <hr>
+      {{#if results}}
+      {{#each results}}
+      <a href="/san-pham/{{this.slug}}" class="col-3">
+        <div class="paper">
+          <img class="lazy" data-src={{this.images}} style="max-width: 100%">
+          <hr>
+          <h6>{{this.name}}</h6>
+          <p class="price">{{this.price}} ₫</p>
+        </div>
+      </a>
+      {{/each}}
+      {{else}}
+      Không tìm thấy kết quả nào :(
+      {{/if}}
+    </div>
+  </div>
 </section>

@@ -14,7 +14,7 @@
   </nav>
 
   {{#if list}}
-  <div class="row flex-wrap">
+  <div class="d-flex flex-wrap">
     {{#each list}}
     <a href="/san-pham/{{this.slug}}" class="col-3">
       <div class="paper">
@@ -25,6 +25,11 @@
       </div>
     </a>
     {{/each}}
+  </div>
+  <br>
+  <div class="d-flex justify-content-center">
+    <ul class="pagination" id="brandPagination">
+    </ul>
   </div>
   {{else}}
   Hiện không có sản phẩm nào thuộc danh mục này.

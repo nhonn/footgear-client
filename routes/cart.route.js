@@ -4,8 +4,8 @@ const ctrl = require('../controllers/cart.controller')
 router
   .route('/')
   .get(ctrl.getCart)
-  .post(ctrl.addItems)
+router.post('/:id', ctrl.addItems)
 
-router.post('/rm', ctrl.removeItem)
+router.post('/rm/:id', ctrl.removeItem)
 
 module.exports = router

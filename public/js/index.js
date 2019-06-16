@@ -32,8 +32,8 @@ $('.owl-carousel').owlCarousel({
 $('.lazy').Lazy()
 
 // hide change password form
-$(function() {
-  $('#checkbox').change(function() {
+$(function () {
+  $('#checkbox').change(function () {
     if ($(this).is(':checked')) {
       $('#changePassword').prop('hidden', false)
     } else {
@@ -82,7 +82,15 @@ function onReview() {
 
 function editProfile() {
   const data = $('form').serialize()
-  $.post('/api/update?' + data, function(data, status) {
+  $.post('/api/update?' + data, function (data, status) {
+    if (status === 200) location.reload()
+    else if (status === 304) alert('Không thể thay đổi thông tin')
+  })
+}
+
+function forgetPassword() {
+  let data = $('#forgetPasswordForm').serialize()
+  $.post('/api/reset?' + data, function (data, status) {
     if (status === 200) location.reload()
     else if (status === 304) alert('Không thể thay đổi thông tin')
   })

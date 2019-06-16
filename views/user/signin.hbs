@@ -37,10 +37,10 @@
         </button>
       </div>
       <div class="modal-body">
-        <form>
+        <form id="forgetPasswordForm">
           <div class="form-group">
             <label for="email">Email của bạn</label>
-            <input type="email" class="form-control" placeholder="Nhập email của bạn" />
+            <input type="email" name="email" class="form-control" placeholder="Nhập email của bạn" />
           </div>
         </form>
       </div>
@@ -48,9 +48,9 @@
         <button type="button" class="btn btn-secondary" data-dismiss="modal">
           Hủy
         </button>
-        <a href="/tai-khoan/dang-nhap" type="button" class="btn btn-primary" data-dismiss="modal">
+        <button type="button" class="btn btn-primary" data-dismiss="modal" onclick="forgetPassword()">
           Gửi
-        </a>
+        </button>
       </div>
     </div>
   </div>

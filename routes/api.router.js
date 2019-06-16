@@ -16,4 +16,6 @@ router.post('/signup', ctrl.signup)
 
 router.get('/signout', ctrl.signout)
 
+router.post('/reset', ctrl.reset)
+
 module.exports = router

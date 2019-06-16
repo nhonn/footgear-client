@@ -13,7 +13,7 @@ module.exports = {
     const brands = await Brand.findAll()
     const newArrivals = await Product.findNewArrivals()
     const hotItems = await Product.findHotItems()
-    req.app.locals.brands = brands
+    res.app.locals.brands = brands
     res.status(200).render('home', {
       title: 'Sneakiie: Trang chủ',
       banners,
@@ -28,7 +28,7 @@ module.exports = {
     })
   },
 
-  getSearchPage: (req, res) => {
+  getSearchPage: async (req, res) => {
     res.status(200).render('home/search', {
       title: 'Tìm kiếm'
     })

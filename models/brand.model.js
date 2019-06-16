@@ -26,11 +26,11 @@ const brandSchema = new Schema({
   }
 })
 
-brandSchema.methods.findBrandProducts = async function() {
+brandSchema.methods.findBrandProducts = async function () {
   return Product.find({ brandID: this.brandID })
 }
 
-brandSchema.statics.findAll = async function() {
+brandSchema.statics.findAll = async function () {
   return this.model('Brand').find({})
 }
 

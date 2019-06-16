@@ -1,4 +1,5 @@
 const Product = require('../models/product.model')
+const Brand = require('../models/brand.model')
 const Review = require('../models/review.model')
 const User = require('../models/user.model')
 const moment = require('moment')
@@ -6,7 +7,7 @@ const moment = require('moment')
 module.exports = {
   getDetail: async (req, res) => {
     const item = await Product.findOne({ slug: req.params.id })
-    const brand = req.brands.filter(x => x.brandID == item.brandID)
+    const brand = await Brand.findOne({ brandID: item.brandID })
     if (item == null || brand == null) res.status(404).render('error404')
     item.views += 1
     item.save()

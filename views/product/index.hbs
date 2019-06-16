@@ -20,12 +20,13 @@
       </div>
       <p class="price" style="font-size: 1.5rem;">{{item.price}} ₫</p>
       <hr>
-      <form>
+      <form id="product" method="POST" action="addToCart({{item.productID}})">
         <div class="d-flex form-group">
           <label>Kích cỡ:</label>
           <select class="form-control col-2" name="size">
+            <option value="12">12</option>
             {{#each item.size}}
-            <option>{{this}}</option>
+            <option value={{this}}>{{this}}</option>
             {{/each}}
           </select>
         </div>

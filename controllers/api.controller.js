@@ -1,4 +1,14 @@
 const User = require('../models/user.model')
+const nodeMailer = require('nodemailer');
+require('dotenv').config()
+
+const transporter = nodeMailer.createTransport({
+  service: 'gmail',
+  auth: {
+    user: process.env.EMAIL_ADDRESS,
+    pass: process.env.EMAIL_PASSWORD
+  }
+});
 
 module.exports = {
   signup: (req, res) => {
@@ -36,5 +46,21 @@ module.exports = {
       user.phone = req.query.phone
       user.save(() => res.status(200).json('success'))
     }
+  },
+
+  reset: (req, res) => {
+    const email = req.query.email;
+    const options = {
+      from: 'trongnhon781@gmail.com',
+      to: email,
+      subject: 'Khôi phục lại mật khẩu',
+      html: '<p>link</p>'
+    }
+    transporter.sendMail(options, function (err, info) {
+      if (err)
+        console.log(err)
+      else
+        console.log(info);
+    });
   }
 }
