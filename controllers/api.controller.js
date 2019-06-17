@@ -27,6 +27,7 @@ module.exports = {
 
   signout: (req, res) => {
     req.logout()
+    req.session.cart = null
     res.redirect('/')
   },
 

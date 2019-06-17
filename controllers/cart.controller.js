@@ -36,12 +36,16 @@ module.exports = {
 
   removeItem: (req, res) => {
     let cart = getCart(req)
-    cart.items = cart.items.filter(x => x.productID !== req.params.id && x.size !== req.query.size)
+    cart.items = cart.items.filter(x => x.productID !== req.params.id || x.size !== req.query.size)
     cart.total = 0
     cart.items.forEach(x => {
       cart.total += Number.parseInt(x.price)
     })
     req.session.cart = cart
-    res.redirect(req.get('referrer'))
+    res.status(200).redirect('back')
+  },
+
+  checkout: (req, res, next) => {
+    res.status(200).render('cart/checkout', { title: 'Thanh toán', data: req.session.cart.total })
   }
 }

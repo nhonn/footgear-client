@@ -95,3 +95,22 @@ function forgetPassword() {
     else if (status === 304) alert('Không thể thay đổi thông tin')
   })
 }
+
+function addToCart(id) {
+  let data = $('#product').serialize()
+  $.post('/gio-hang/' + id + '?' + data, function (data, status) {
+    if (status === 200) location.reload()
+    else if (status === 304) alert('Không thể thay đổi thông tin')
+  })
+}
+
+function removeFromCart(id, size) {
+  $.post('/gio-hang/rm/' + id + '?size=' + size, null, () => {
+    location.reload();
+  })
+}
+
+function cancelOrder() {
+  $('#shipmentInfo')[0].reset()
+  window.history.back()
+}

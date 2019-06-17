@@ -20,7 +20,7 @@
       </div>
       <p class="price" style="font-size: 1.5rem;">{{item.price}} ₫</p>
       <hr>
-      <form id="product" method="POST" action="addToCart({{item.productID}})">
+      <form id="product">
         <div class="d-flex form-group">
           <label>Kích cỡ:</label>
           <select class="form-control col-2" name="size">
@@ -31,7 +31,7 @@
           </select>
         </div>
         <br />
-        <button class="btn btn-primary dark w-50" type="submit">Thêm
+        <button class="btn btn-primary dark w-50" onclick="addToCart({{item.productID}})">Thêm
           vào giỏ hàng</button>
       </form>
       <hr>

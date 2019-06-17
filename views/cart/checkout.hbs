@@ -1,27 +1,36 @@
-<div class="row">
-  <div class="paper col-8">
-    <h5>Thông tin người nhận hàng</h5>
-    <br />
-    <form>
+<section class="container">
+  <form id="shipmentInfo" action="/don-hang" method="POST" data-parsley-validate=""
+    class="d-flex justify-content-between">
+    <div class="paper col-8">
+      <h5><span>Thông tin người nhận hàng</span></h5>
+      <br />
       <div class="form-group">
         <label for="name">Tên người nhận</label>
-        <input type="text" class="form-control" id="name" placeholder="Nhập tên người nhận" />
+        <input type="text" class="form-control" id="name" name="fullname" placeholder="Nhập tên người nhận"
+          data-parsley-trigger="keyup" value="{{user.fullname}}" required="" />
       </div>
       <div class="form-group">
         <label for="address">Địa chỉ</label>
-        <input type="text" class="form-control" id="address" placeholder="Nhập địa chỉ người nhận" />
+        <input type="text" class="form-control" id="address" name="address" placeholder="Nhập địa chỉ người nhận"
+          data-parsley-trigger="keyup" data-parsley-error-message="Địa chỉ không được bỏ trống" required="" />
       </div>
       <div class="form-group">
         <label for="phone">Số điện thoại</label>
-        <input type="text" class="form-control" id="phone" placeholder="Nhập số điện thoại" />
+        <input type="text" class="form-control" id="phone" name="phone" placeholder="Nhập số điện thoại"
+          value="{{user.phone}}" required="" data-parsley-error-message="Số điện thoại không hợp lệ."
+          data-parsley-trigger="keyup" data-parsley-type="digits" data-parsley-minlength="10"
+          data-parsley-maxlength="10" />
       </div>
-    </form>
-  </div>
-  <div class="paper col-3 d-block">
-    <h5>Tổng thanh toán:</h5>
-    <hr />
-    <h4>20000000</h4>
-    <hr />
-    <button class="btn btn-primary">Thanh toán</button>
-  </div>
-</div>
+    </div>
+    <aside class="paper col-3">
+      <h5>Tổng hóa đơn:</h5>
+      <hr />
+      <h4 class="text-center price">{{data}} ₫</h4>
+      <hr />
+      <div class="d-flex justify-content-between">
+        <button class="btn btn-success" type=="submit">Thanh toán</button>
+        <button class="btn" onclick="cancelOrder()">Hủy</button>
+      </div>
+    </aside>
+  </form>
+</section>

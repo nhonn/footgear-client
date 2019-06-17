@@ -4,13 +4,12 @@ const passport = require('passport')
 
 router.post(
   '/signin',
-  (req, res, next) => {
-    passport.authenticate('local', {
-      successRedirect: '/',
-      failureRedirect: '/tai-khoan/dang-nhap',
-      failureFlash: true
-    })(req, res, next)
+  passport.authenticate('local', {
+    successRedirect: '/',
+    failureRedirect: '/tai-khoan/dang-nhap',
+    failureFlash: true
   })
+)
 
 router.post('/update', ctrl.update)
 
