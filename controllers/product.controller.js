@@ -1,8 +1,6 @@
 const Product = require('../models/product.model')
 const Brand = require('../models/brand.model')
 const Review = require('../models/review.model')
-const User = require('../models/user.model')
-const moment = require('moment')
 
 module.exports = {
   getDetail: async (req, res) => {
@@ -12,13 +10,7 @@ module.exports = {
     item.views += 1
     item.save()
     const sameBrand = await brand.findBrandProducts()
-    let reviews = await Review.find({ productID: item.productID }, null, {
-      sort: { created_at: -1 }
-    })
-    reviews.forEach(async e => {
-      e.name = await User.getName(e.userID)
-      e.date = moment(e.created_at).format('HH:mm DD:MM:YYYY')
-    })
+    let reviews = await Review.get(item.productID)
     res.status(200).render('product', {
       title: item.name,
       item,
