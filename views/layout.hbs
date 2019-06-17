@@ -51,8 +51,9 @@
       <div class="nav-item dropdown">
         <i class="btn btn-link fas fa-user" style="color: turquoise"></i>
         <div class="dropdown-menu dropdown-menu-right">
-          <a class="dropdown-item" href="/tai-khoan">Thông tin tài khoản</a>
-          <a class="dropdown-item" href="/api/signout">Đăng xuất</a>
+          <a class="dropdown-item text-right" href="/tai-khoan">Thông tin tài khoản</a>
+          <a class="dropdown-item text-right" href="/don-hang">Lịch sử mua hàng</a>
+          <a class="dropdown-item text-right" href="/api/signout">Đăng xuất</a>
         </div>
       </div>
       {{else}}
@@ -80,6 +81,9 @@
           <li class="nav-item">
             <a href="/tai-khoan">Quản lý tài khoản</a>
           </li>
+          <li class="nav-item">
+            <a href="/don-hang">Lịch sử mua hàng</a>
+          </li>
           {{else}}
           <li class="nav-item">
             <a href="/tai-khoan/dang-nhap">Đăng nhập</a>
@@ -88,9 +92,6 @@
             <a href="/tai-khoan/dang-ky">Đăng ký</a>
           </li>
           {{/if}}
-          </li>
-          <li class="nav-item">
-            <a href="/don-hang">Lịch sử mua hàng</a>
           </li>
           <li class="nav-item">
             <a href="/dieu-khoan-su-dung">Điều khoản sử dụng</a>

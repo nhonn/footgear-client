@@ -58,5 +58,16 @@ orderSchema.statics.findByUserID = async function (id) {
   return orders
 }
 
+orderSchema.statics.findOrdersByStatus = async function (id, state) {
+  let orders = await this.model('Order').find({ userID: id, status: state })
+  orders.forEach(e => {
+    e.date = moment(e.created_at).format('HH:mm DD:MM:YYYY')
+    if (state === 'processing') e.state = 'Đang xử lý'
+    else if (state === 'shipping') e.state = 'Đang giao hàng'
+    else state = 'Đã hoàn thành'
+  });
+  return orders
+}
+
 const Order = mongoose.model('Order', orderSchema)
 module.exports = Order

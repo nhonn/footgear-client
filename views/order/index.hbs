@@ -1,5 +1,12 @@
 <section class="container">
-  <h5><span>Đơn hàng của tôi</span></h5>
+  <div class="d-flex justify-content-between">
+    <h5><span>Đơn hàng của tôi</span></h5>
+    <div>
+      <a class="btn btn-outline-dark" href="?view=proc">Đang xử lý</a>
+      <a class="btn btn-outline-dark" href="?view=ship">Đang giao hàng</a>
+      <a class="btn btn-outline-dark" href="?view=done">Đã hoàn thành</a>
+    </div>
+  </div>
   {{#if orders}}
   <table class="table paper">
     <thead class="thead-dark">

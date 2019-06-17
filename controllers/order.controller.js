@@ -3,7 +3,16 @@ const Order = require('../models/order.model')
 
 module.exports = {
   getOrder: async (req, res) => {
-    const orders = await Order.findByUserID(req.user.userID)
+    let view = req.query.view
+    if (view == 'proc') view = 'processing'
+    else if (view == 'ship') view = 'shipping'
+    else if (view == 'done') view = 'done'
+    else view = null
+    let orders
+    if (view == null || view === undefined)
+      orders = await Order.findByUserID(req.user.userID)
+    else
+      orders = await Order.findOrdersByStatus(req.user.userID, view)
     res.status(200).render('order', {
       title: 'Đơn hàng',
       orders
