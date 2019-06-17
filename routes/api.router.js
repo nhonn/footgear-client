@@ -6,7 +6,8 @@ router.post(
   '/signin',
   passport.authenticate('local', {
     successRedirect: '/',
-    failureRedirect: '/tai-khoan/dang-nhap'
+    failureRedirect: '/tai-khoan/dang-nhap',
+    failureFlash: true
   })
 )
 

@@ -6,6 +6,7 @@ const session = require('express-session')
 const passport = require('passport')
 const mongoose = require('mongoose')
 const MongoStore = require('connect-mongo')(session)
+const flash = require('connect-flash')
 
 const app = express()
 
@@ -23,14 +24,16 @@ app.use(
 app.use(
   session({
     secret: 'keyboard cat',
-    saveUninitialized: false,
+    saveUninitialized: true,
     resave: false,
+    cookie: { secure: false },
     store: new MongoStore({
       mongooseConnection: mongoose.connection,
       ttl: 60 * 60
     })
   })
 )
+app.use(flash())
 app.use(passport.initialize())
 app.use(passport.session())
 require('./fn/passport')(passport)

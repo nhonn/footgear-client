@@ -59,7 +59,8 @@
       <div class="nav-item dropdown">
         <i class="btn btn-link fas fa-user"></i>
         <div class="dropdown-menu dropdown-menu-right">
-          <a class="dropdown-item" href="/tai-khoan/dang-nhap">Đăng nhập/ Đăng ký</a>
+          <a class="dropdown-item" href="/tai-khoan/dang-nhap">Đăng nhập</a>
+          <a class="dropdown-item" href="/tai-khoan/dang-ky">Đăng ký</a>
         </div>
       </div>
       {{/if}}
@@ -74,12 +75,18 @@
       <div class="col">
         <h6>Hỗ trợ</h6>
         <ul class="nav flex-column">
+          {{#if user}}
           <li class="nav-item">
-            {{#if user}}
             <a href="/tai-khoan">Quản lý tài khoản</a>
-            {{else}}
-            <a href="/tai-khoan/dang-nhap">Đăng nhập/ Đăng ký</a>
-            {{/if}}
+          </li>
+          {{else}}
+          <li class="nav-item">
+            <a href="/tai-khoan/dang-nhap">Đăng nhập</a>
+          </li>
+          <li class="nav-item">
+            <a href="/tai-khoan/dang-ky">Đăng ký</a>
+          </li>
+          {{/if}}
           </li>
           <li class="nav-item">
             <a href="/don-hang/lich-su">Lịch sử mua hàng</a>
@@ -116,7 +123,6 @@
   </footer>
 
   <!-- Optional JavaScript -->
-  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
   <script src="https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js"
     integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js"
@@ -125,6 +131,7 @@
     integrity="sha256-pTxD+DSzIwmwhOqTFN+DB+nHjO4iAsbgfyFq5K5bcE0=" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/jquery-lazy@1.7.10/jquery.lazy.min.js"
     integrity="sha256-F1PsuZtrEWg+kzpvQ5sTsw8l1uJks9BFNVew39S2rZU=" crossorigin="anonymous"></script>
+  <script src="/js/parsley.min.js"></script>
   <script src="/js/index.js"></script>
 </body>
 

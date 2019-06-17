@@ -3,7 +3,8 @@ module.exports = {
   getLoginPage: (req, res) => {
     if (req.user) res.status(200).redirect('/tai-khoan')
     res.status(200).render('user/signin', {
-      title: 'Đăng nhập'
+      title: 'Đăng nhập',
+      flash: req.flash('error')
     })
   },
 
