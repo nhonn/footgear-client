@@ -18,6 +18,12 @@ router.post('/signup', ctrl.signup)
 
 router.get('/signout', ctrl.signout)
 
-router.post('/reset', ctrl.reset)
+router.route('/reset')
+  .get(ctrl.reset)
+  .post(ctrl.resetPassword)
+
+router.route('/active')
+  .get(ctrl.active)
+  .post(ctrl.activeAccount)
 
 module.exports = router

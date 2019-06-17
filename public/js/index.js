@@ -92,10 +92,7 @@ function onReview() {
 
 function forgetPassword() {
   let data = $('#forgetPasswordForm').serialize()
-  $.post('/api/reset?' + data, function (data, status) {
-    if (status === 200) location.reload()
-    else if (status === 304) alert('Không thể thay đổi thông tin')
-  })
+  $.post('/api/reset?' + data)
 }
 
 function addToCart(id) {
