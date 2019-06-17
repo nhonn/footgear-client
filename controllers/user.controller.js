@@ -18,7 +18,8 @@ module.exports = {
   getProfilePage: async (req, res) => {
     if (!req.user) res.status(403).redirect('/tai-khoan/dang-nhap')
     res.status(200).render('user', {
-      title: 'Thông tin tài khoản'
+      title: 'Thông tin tài khoản',
+      flash: req.flash('error')
     })
   }
 }

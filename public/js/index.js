@@ -42,6 +42,16 @@ $(function () {
   })
 })
 
+function hideChangePassword() {
+  if ($('#checkbox').is(':checked')) {
+    $('#checkbox').prop('checked', false)
+    $('#changePassword').prop('hidden', true)
+  } else {
+    $('#checkbox').prop('checked', true)
+    $('#changePassword').prop('hidden', false)
+  }
+}
+
 function addReview() {
   $('#addReview').prop('hidden', false)
 }
@@ -78,14 +88,6 @@ function onReview() {
   $('#reviewButton').css(primary)
   $('#Description').prop('hidden', true)
   $('#Review').prop('hidden', false)
-}
-
-function editProfile() {
-  const data = $('form').serialize()
-  $.post('/api/update?' + data, function (data, status) {
-    if (status === 200) location.reload()
-    else if (status === 304) alert('Không thể thay đổi thông tin')
-  })
 }
 
 function forgetPassword() {

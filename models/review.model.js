@@ -35,10 +35,10 @@ reviewSchema.statics.get = async function (id) {
     sort: { created_at: -1 }
   })
   reviews.forEach(e => {
-    e.name = users.filter(x => x.userID == e.userID)[0].fullname
+    let user = users.filter(x => x.userID == e.userID)[0]
+    e.name = user ? user.fullname : 'Khách hàng'
     e.date = moment(e.created_at).format('HH:mm DD:MM:YYYY')
   })
-
   return reviews
 }
 

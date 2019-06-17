@@ -1,5 +1,6 @@
 const User = require('../models/user.model')
 const nodeMailer = require('nodemailer');
+const bcrypt = require('bcrypt')
 require('dotenv').config()
 
 const transporter = nodeMailer.createTransport({
@@ -20,7 +21,7 @@ module.exports = {
     })
 
     newUser.save((err, newUser) => {
-      if (err) console.log(err)
+      if (err) req.flash('error', 'Không thể lưu tài khoản')
       else res.status(200).redirect('/tai-khoan/dang-nhap')
     })
   },
@@ -31,22 +32,26 @@ module.exports = {
     res.redirect('/')
   },
 
-  update: async (req, res) => {
+  updateProfile: (req, res) => {
     let user = req.user
-    if (req.query.oldPass || req.query.newPass || req.query.rePass) {
-      if (User.verify(user.email, req.query.oldPass)) {
-        user.fullname = req.query.name
-        user.gender = req.query.gender === 'male' ? 0 : 1
-        user.password = req.query.newPass
-        user.phone = req.query.phone
-        user.save(() => res.status(200).json('success'))
-      } else res.status(304).json('fail')
+    user.fullname = req.body.name
+    user.phone = req.body.phone
+    user.gender = req.body.gender
+    user.save()
+    res.status(200).redirect('/tai-khoan')
+  },
+
+  updatePassword: async (req, res) => {
+    let user = req.user
+    let tmp = await bcrypt.compare(req.body.oldpass, user.password)
+    console.log(tmp)
+    if (tmp) {
+      user.password = req.body.newpass
+      user.save()
     } else {
-      user.fullname = req.query.name
-      user.gender = req.query.gender === 'male' ? 0 : 1
-      user.phone = req.query.phone
-      user.save(() => res.status(200).json('success'))
+      req.flash('error', 'Sai mật khẩu.')
     }
+    res.redirect('/tai-khoan')
   },
 
   reset: (req, res) => {

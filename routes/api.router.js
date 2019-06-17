@@ -11,7 +11,8 @@ router.post(
   })
 )
 
-router.post('/update', ctrl.update)
+router.post('/updateProfile', ctrl.updateProfile)
+router.post('/updatePassword', ctrl.updatePassword)
 
 router.post('/signup', ctrl.signup)
 
