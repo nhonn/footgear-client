@@ -1,0 +1,41 @@
+<section class="container">
+  <div class="d-flex justify-content-between">
+    <h5><span>Đơn hàng của tôi</span></h5>
+    <div>
+      <a class="btn btn-outline-dark" href="?view=proc">Đang xử lý</a>
+      <a class="btn btn-outline-dark" href="?view=ship">Đang giao hàng</a>
+      <a class="btn btn-outline-dark" href="?view=done">Đã hoàn thành</a>
+    </div>
+  </div>
+  {{#if orders}}
+  <table class="table paper">
+    <thead class="thead-dark">
+      <tr class="d-flex">
+        <th class="col-2">Mã đơn hàng</th>
+        <th class="col-2">Ngày mua</th>
+        <th class="col-4">Sản phẩm</th>
+        <th class="col-2 text-center">Tổng tiền</th>
+        <th class="col-2 text-right">Trạng thái đơn hàng</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{#each orders}}
+      <tr class="d-flex">
+        <td class="col-2">{{this.orderID}}</td>
+        <td class="col-2">{{this.date}}</td>
+        <td class="col-4">
+          {{#each this.items}}
+          {{this.name}}
+          <br>
+          {{/each}}
+        </td>
+        <td class="col-2 text-center">{{this.totalPrice}}</td>
+        <td class="col-2 text-right">{{this.state}}</td>
+      </tr>
+      {{/each}}
+    </tbody>
+  </table>
+  {{else}}
+  Hiện bạn chưa có đơn hàng nào.
+  {{/if}}
+</section>

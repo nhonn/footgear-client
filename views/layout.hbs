@@ -32,16 +32,14 @@
         <li class="nav-item dropdown">
           <div class="btn text-light">Thương hiệu</div>
           <div class="dropdown-menu">
-            <a class="dropdown-item" href="/thuong-hieu/adidas">Adidas</a>
-            <a class="dropdown-item" href="/thuong-hieu/bitis">Biti's</a>
-            <a class="dropdown-item" href="/thuong-hieu/converse">Converse</a>
-            <a class="dropdown-item" href="/thuong-hieu/nike">Nike</a>
-            <a class="dropdown-item" href="/thuong-hieu/vans">Vans</a>
+            {{#each brands}}
+            <a class="dropdown-item" href="/thuong-hieu/{{this.slug}}">{{this.name}}</a>
+            {{/each}}
           </div>
         </li>
       </ul>
-      <form class="form-inline">
-        <input class="form-control" type="search" name="search" placeholder="Tìm kiếm" />
+      <form class="form-inline" action="/tim-kiem">
+        <input class="form-control" type="search" name="q" placeholder="Tìm kiếm" />
         <button class="btn btn-link" type="submit">
           <i class="fas fa-search"></i>
         </button>
@@ -49,14 +47,27 @@
       <a class="btn" href="/gio-hang">
         <i class="fas fa-shopping-cart"></i>
       </a>
+      {{#if user}}
+      <div class="nav-item dropdown">
+        <i class="btn btn-link fas fa-user" style="color: turquoise"></i>
+        <div class="dropdown-menu dropdown-menu-right">
+          <a class="dropdown-item text-right" href="/tai-khoan">Thông tin tài khoản</a>
+          <a class="dropdown-item text-right" href="/don-hang">Lịch sử mua hàng</a>
+          <a class="dropdown-item text-right" href="/api/signout">Đăng xuất</a>
+        </div>
+      </div>
+      {{else}}
       <div class="nav-item dropdown">
         <i class="btn btn-link fas fa-user"></i>
         <div class="dropdown-menu dropdown-menu-right">
-          <a class="dropdown-item" href="/tai-khoan/dang-nhap">Đăng nhập/ Đăng ký</a>
+          <a class="dropdown-item" href="/tai-khoan/dang-nhap">Đăng nhập</a>
+          <a class="dropdown-item" href="/tai-khoan/dang-ky">Đăng ký</a>
         </div>
       </div>
+      {{/if}}
     </div>
   </nav>
+  <br>
   <main>
     {{{body}}}
   </main>
@@ -66,11 +77,21 @@
       <div class="col">
         <h6>Hỗ trợ</h6>
         <ul class="nav flex-column">
+          {{#if user}}
           <li class="nav-item">
-            <a href="/tai-khoan/dang-nhap">Đăng nhập/ Đăng ký</a>
+            <a href="/tai-khoan">Quản lý tài khoản</a>
           </li>
           <li class="nav-item">
-            <a href="/don-hang/lich-su">Lịch sử mua hàng</a>
+            <a href="/don-hang">Lịch sử mua hàng</a>
+          </li>
+          {{else}}
+          <li class="nav-item">
+            <a href="/tai-khoan/dang-nhap">Đăng nhập</a>
+          </li>
+          <li class="nav-item">
+            <a href="/tai-khoan/dang-ky">Đăng ký</a>
+          </li>
+          {{/if}}
           </li>
           <li class="nav-item">
             <a href="/dieu-khoan-su-dung">Điều khoản sử dụng</a>
@@ -104,7 +125,6 @@
   </footer>
 
   <!-- Optional JavaScript -->
-  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
   <script src="https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js"
     integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js"
@@ -113,6 +133,7 @@
     integrity="sha256-pTxD+DSzIwmwhOqTFN+DB+nHjO4iAsbgfyFq5K5bcE0=" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/jquery-lazy@1.7.10/jquery.lazy.min.js"
     integrity="sha256-F1PsuZtrEWg+kzpvQ5sTsw8l1uJks9BFNVew39S2rZU=" crossorigin="anonymous"></script>
+  <script src="/js/parsley.min.js"></script>
   <script src="/js/index.js"></script>
 </body>
 

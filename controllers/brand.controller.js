@@ -5,14 +5,22 @@ module.exports = {
     const brand = await Brand.findOne({ slug: req.params.id })
     if (brand == null) {
       res.status(404).render('error404')
-    } else {
-      const list = await brand.findBrandProducts()
-      res.status(200).render('brand', {
-        list: list,
-        title: brand.name,
-        brand: brand,
-        layout: req.session.layout
-      })
     }
+    const order = req.query.order
+    let list = await brand.findBrandProducts()
+    if (order == 'newest') {
+      list.sort((a, b) => b.created_at - a.created_at)
+    } else if (order == 'top') {
+      list.sort((a, b) => b.noOfPurchased - a.noOfPurchased)
+    } else if (order == 'asc') {
+      list.sort((a, b) => a.price - b.price)
+    } else if (order == 'desc') {
+      list.sort((a, b) => b.price - a.price)
+    }
+    res.status(200).render('brand', {
+      title: brand.name,
+      list,
+      brand
+    })
   }
 }
