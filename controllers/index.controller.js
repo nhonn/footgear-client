@@ -29,8 +29,11 @@ module.exports = {
   },
 
   getSearchPage: async (req, res) => {
+    const q = req.query.q
+    const results = await Product.find({ name: { "$regex": q } })
     res.status(200).render('home/search', {
-      title: 'Tìm kiếm'
+      title: 'Tìm kiếm',
+      results
     })
   }
 }

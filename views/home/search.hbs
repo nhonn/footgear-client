@@ -28,16 +28,18 @@
       <h5>Kết quả tìm kiếm</h5>
       <hr>
       {{#if results}}
-      {{#each results}}
-      <a href="/san-pham/{{this.slug}}" class="col-3">
-        <div class="paper">
-          <img class="lazy" data-src={{this.images}} style="max-width: 100%">
-          <hr>
-          <h6>{{this.name}}</h6>
-          <p class="price">{{this.price}} ₫</p>
-        </div>
-      </a>
-      {{/each}}
+      <div class="d-flex flex-wrap">
+        {{#each results}}
+        <a href="/san-pham/{{this.slug}}" class="col-3">
+          <div class="paper">
+            <img src={{this.images}} style="width: 100%">
+            <hr>
+            <h6>{{this.name}}</h6>
+            <p class="price">{{this.price}} ₫</p>
+          </div>
+        </a>
+        {{/each}}
+      </div>
       {{else}}
       Không tìm thấy kết quả nào :(
       {{/if}}
